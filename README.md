@@ -8,7 +8,7 @@ This project is a pure python port of the [algorithm header](https://en.cpprefer
 
 All functions live in the ```std``` namespace, you can import it with ```import std``` and then call the functions like this: ```std.all_of()```
 
-## Implemente d functions
+## Implemented functions
 
 The list of f unctions is taken from https://en.cppreference.com/w/cpp/algorithm
 
