@@ -1,20 +1,25 @@
 # Python_std_algorithm
 
-This project is a pure python port of the [algorithm header](https://en.cppreference.com/w/cpp/algorithm) from the C++ standard template library (STL for short).
+This project is a pure python implementation of the [algorithm header](https://en.cppreference.com/w/cpp/algorithm) from the C++ standard template library (STL for short).
 
 
 
+## Installation
+A pypi package will be available soon
 ## How to use
 
 All functions live in the ```std``` namespace, you can import it with ```import std``` and then call the functions like this: ```std.all_of()```
 
-## Implemente d functions
+## Implemented functions
 
-The list of f unctions is taken from https://en.cppreference.com/w/cpp/algorithm
+The list of functions is taken from https://en.cppreference.com/w/cpp/algorithm
 
 When a function's checkbox is ticked, it is implemented by this library.
 
 When a function's checkbox is NOT ticked, it is not implemented. A comment states a reason why the function can not be implemented properly.
+
+<details> <summary>Click to expand!</summary>
+<p>
 
 ### Non-modifying sequence operations
 
@@ -201,3 +206,21 @@ When a function's checkbox is NOT ticked, it is not implemented. A comment state
 
 - [ ] next_permutation
 - [ ] prev_permutation
+</p>
+</details>
+
+## Contributing
+
+First of all, thanks a lot for your contribution, any form of contribution is very welcome and appropriated!
+
+Please familiarise yourself with this project's [code of conduct](CODE_OF_CONDUCT.md) and [contribution guidelines](CONTRIBUTING.md).
+
+## Getting help
+
+1. Read the docs
+2. If the docs don't help, open an Issue stating your problem
+
+## License
+Copyright (C) 2020 [Jonas Muehlmann](https://github.com/JonasMuehlmann)
+ 
+The project is licensed under the terms of the GPL-V3 license, you can view it [here](LICENSE.md).
