@@ -1,0 +1,4 @@
+.idea
+.benchmarks
+doc
+.pytest_cache
