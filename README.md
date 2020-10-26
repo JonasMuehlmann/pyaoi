@@ -1,7 +1,7 @@
 # Python_std_algorithm
+[![Join the chat at https://gitter.im/python_std_algorithm/community](https://badges.gitter.im/python_std_algorithm/community.svg)](https://gitter.im/python_std_algorithm/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This project is a pure python implementation of the [algorithm header](https://en.cppreference.com/w/cpp/algorithm) from the C++ standard template library (STL for short).
-
 
 
 ## Installation
