@@ -218,7 +218,8 @@ Please familiarise yourself with this project's [code of conduct](CODE_OF_CONDUC
 ## Getting help
 
 1. Read the docs
-2. If the docs don't help, open an Issue stating your problem
+2. Get in touch with other contributors at [gitter](https://gitter.im/python_std_algorithm/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+2. If you think you found a bug, or documentation could be improved, please open an issue
 
 ## License
 Copyright (C) 2020 [Jonas Muehlmann](https://github.com/JonasMuehlmann)
