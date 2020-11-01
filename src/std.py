@@ -1,6 +1,19 @@
 """A pure python implementation of the C++ Standard Template Library(STL)'s algorithm header"""
 #  This file is part of python_std_algorithm.
 #  Copyright (C) 2020 Jonas Muehlmann
+# 
+#      python_std_algorithm is free software: you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation, either version 3 of the License, or
+#      (at your option) any later version.
+# 
+#      python_std_algorithm is distributed in the hope that it will be useful,
+#      but WITHOUT ANY WARRANTY; without even the implied warranty of
+#      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#      GNU General Public License for more details.
+# 
+#      You should have received a copy of the GNU General Public License
+#      along with python_std_algorithm.  If not, see <https://www.gnu.org/licenses/>.
 #
 #      python_std_algorithm is free software: you can redistribute it and/or modify
 #      it under the terms of the GNU General Public License as published by
@@ -19,7 +32,16 @@
 
 
 import operator
-from typing import Callable, Any, Tuple, Optional, Iterable, MutableSequence, Collection, Sequence
+from typing import (
+    Callable,
+    Any,
+    Tuple,
+    Optional,
+    Iterable,
+    MutableSequence,
+    Collection,
+    Sequence,
+)
 
 UnaryPredicate = Callable[[Any], bool]
 """A callable that takes one argument and returns a bool"""
@@ -114,6 +136,7 @@ def for_each_n(
         mutable_sequence[:n] = list(map(unary_function, mutable_sequence[:n]))
 
 
+# CHECK: If using collections.Counter is faster
 def count(sequence: Sequence, target: Any) -> int:
     """
     Count how often target appears in sequence
@@ -139,38 +162,22 @@ def count_if(iterable: Iterable, unary_predicate: UnaryPredicate) -> int:
     Returns:
         For how many items unary predicate returned True
     """
-    occurrences: int = 0
-
-    for element in iterable:
-        if unary_predicate(element):
-            occurrences += 1
-
-    return occurrences
+    return sum(map(unary_predicate, iterable))
+    # return reduce(lambda x, y: x + unary_predicate(y), iterable, 0)
 
 
-
-def count_if_not(collection: Collection, unary_predicate: UnaryPredicate) -> int:
+def count_if_not(iterable: Iterable, unary_predicate: UnaryPredicate) -> int:
     """
-    Count for how many elements in a collection an unary predicate returns False
+    Count for how many elements in a iterable an unary predicate returns False
 
     Args:
-        collection: An iterable for which to count for how many elements unary_predicate returns False
-        unary_predicate: A value/object, for which to count for how many items in the collection it returns False
+        iterable: An iterable for which to count for how many elements unary_predicate returns False
+        unary_predicate: A value/object, for which to count for how many items in the iterable it returns False
 
     Returns:
-        For how many items unary predicate returned False, -1 if the collection is empty
+        For how many items unary predicate returned False, -1 if the iterable is empty
     """
-    if len(collection) == 0:
-        # CHECK: if it makes sense to raise an exception or return None instead
-        return -1
-
-    occurrences: int = 0
-
-    for element in collection:
-        if not unary_predicate(element):
-            occurrences += 1
-
-    return occurrences
+    return -1 if not iterable else sum(map(lambda element: not unary_predicate(element), iterable))
 
 
 def mismatch(
@@ -210,16 +217,22 @@ def mismatch(
     builtin_min: Callable = __builtins__["min"]
     last_index_shortest_iterable: int = builtin_min(len(iterable1), len(iterable2)) - 1
 
-    return next((pair for pair in zip(iterable1, iterable2) if not binary_predicate(*pair)), (iterable1[last_index_shortest_iterable], iterable2[last_index_shortest_iterable]))
-
-
+    return next(
+        (pair for pair in zip(iterable1, iterable2) if not binary_predicate(*pair)),
+        (
+            iterable1[last_index_shortest_iterable],
+            iterable2[last_index_shortest_iterable],
+        ),
+    )
 
 
 def find(collection: Collection, target_element: Any) -> int:
     try:
-        return list(filter(lambda element: element == target_element, collection)).index(True)
+        return list(
+            filter(lambda element: element == target_element, collection)
+        ).index(True)
     except ValueError:
-        return len(collection) -1
+        return len(collection) - 1
 
 
 def find_if(collection: Collection, unary_predicate: UnaryPredicate) -> int:
