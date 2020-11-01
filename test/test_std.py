@@ -108,15 +108,36 @@ class TestMismatch:
 
 
 class TestFind:
-    pass
+    def test_not_present(self):
+        assert std.find([1, 2, 3, 4, 5], 6) == 4
+
+    def test_first_element(self):
+        assert std.find([1, 2, 3, 4, 5], 1) == 0
+
+    def test_empty_collection(self):
+        assert std.find([], 2) == -1
 
 
 class TestFindIf:
-    pass
+    def test_not_present(self):
+        assert std.find_if([1, 2, 3, 4, 5], lambda x: x > 6) == 4
+
+    def test_first_element(self):
+        assert std.find_if([1, 2, 3, 4, 5], lambda x: x == 1) == 0
+
+    def test_empty_collection(self):
+        assert std.find_if([], lambda x: 0 < x < 5) == -1
 
 
 class TestFindIfNot:
-    pass
+    def test_not_present(self):
+        assert std.find_if_not([1, 2, 3, 4, 5], lambda x: x < 6) == 4
+
+    def test_first_element(self):
+        assert std.find_if_not([1, 2, 3, 4, 5], lambda x: x != 1) == 0
+
+    def test_empty_collection(self):
+        assert std.find_if_not([], lambda x: 0 < x < 5) == -1
 
 
 class TestFindEnd:
