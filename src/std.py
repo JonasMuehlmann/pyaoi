@@ -89,8 +89,7 @@ def for_each(
         for element in mutable_sequence:
             unary_function(element)
     else:
-        for i, element in enumerate(mutable_sequence):
-            mutable_sequence[i] = unary_function(element)
+        mutable_sequence[:] = list(map(unary_function, mutable_sequence))
 
 
 def for_each_n(
@@ -112,8 +111,7 @@ def for_each_n(
         for element in mutable_sequence[:n]:
             unary_function(element)
     else:
-        for i, element in enumerate(mutable_sequence[:n]):
-            mutable_sequence[i] = unary_function(element)
+        mutable_sequence[:n] = list(map(unary_function, mutable_sequence[:n]))
 
 
 def count(sequence: Sequence, target: Any) -> int:
