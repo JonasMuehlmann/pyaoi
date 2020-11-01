@@ -40,25 +40,50 @@ class TestNoneOf:
 
 
 class TestForEach:
-    def test_by_addition(self):
-        sequence: List[int] = [1, 2, 3, 4, 5]
+    def test_increment(self):
+        collection: List[int] = [1, 2, 3, 4, 5]
 
-        std.for_each(sequence, lambda x: x + 1)
+        std.for_each(collection, lambda x: x + 1, False)
 
-        assert sequence == [2, 3, 4, 5, 6]
+        assert collection == [2, 3, 4, 5, 6]
+
+    def test_sum(self):
+        collection: List[int] = [1, 2, 3, 4, 5]
+        sum: int = 0
+
+        def _add(x: int):
+            nonlocal sum
+            sum += x
+
+        std.for_each(collection, _add)
+
+        assert sum == 15 and collection == [1, 2, 3, 4, 5]
 
 
 class TestForEachN:
-    def test_by_addition(self):
-        sequence: List[int] = [1, 2, 3, 4, 5]
+    def test_increment(self):
+        collection: List[int] = [1, 2, 3, 4, 5]
 
-        std.for_each_n(sequence, lambda x: x + 1, 2)
+        std.for_each_n(collection, lambda x: x + 1, 2, False)
 
-        assert sequence == [2, 3, 3, 4, 5]
+        assert collection == [2, 3, 3, 4, 5]
+
+    def test_sum(self):
+        collection: List[int] = [1, 2, 3, 4, 5]
+
+        sum: int = 0
+
+        def _add(x: int):
+            nonlocal sum
+            sum += x
+
+        std.for_each_n(collection, _add, 2)
+
+        assert sum == 3 and collection == [1, 2, 3, 4, 5]
 
 
 class TestCount:
-    def test_empty_iterable(self):
+    def test_empty_collection(self):
         assert std.count([], 5) == 0
 
     def test_0_occurrences(self):
@@ -69,7 +94,7 @@ class TestCount:
 
 
 class TestCountIf:
-    def test_empty_iterable(self):
+    def test_empty_collection(self):
         assert std.count_if([], lambda x: x == 1) == 0
 
     def test_0_occurrences(self):
@@ -80,7 +105,7 @@ class TestCountIf:
 
 
 class TestCountIfNot:
-    def test_empty_iterable(self):
+    def test_empty_collection(self):
         assert std.count_if_not([], lambda x: x == 1) == -1
 
     def test_0_occurrences(self):
@@ -91,16 +116,16 @@ class TestCountIfNot:
 
 
 class TestMismatch:
-    def test_one_iterable_empty(self):
+    def test_one_collection_empty(self):
         assert std.mismatch([1, 2, 3, 4, 5], []) is None
 
-    def test_both_iterables_empty(self):
+    def test_both_collections_empty(self):
         assert std.mismatch([], []) is None
 
     def test_no_difference(self):
         assert std.mismatch([1, 2, 3, 4, 5], [1, 2, 3, 4, 5]) == (5, 5)
 
-    def test_no_difference_and_second_iterable_longer(self):
+    def test_no_difference_and_second_collection_longer(self):
         assert std.mismatch([1, 2, 3, 4, 5], [1, 2, 3, 4, 5, 6, 7]) == (5, 5)
 
     def test_last_is_different(self):

@@ -28,8 +28,8 @@ When a function's checkbox is NOT ticked, it is not implemented. A comment state
 - [x] none_of
 
 
-- [x] for_each
-- [x] for_each_n
+- [x] for_each ***Has an extra parameter readonly due to python limitations***
+- [x] for_each_n ***Has an extra parameter readonly due to python limitations***
 
 - [x] count
 - [x] count_if
@@ -37,9 +37,9 @@ When a function's checkbox is NOT ticked, it is not implemented. A comment state
 
 - [x] mismatch
 
-- [ ] find
-- [ ] find_if
-- [ ] find_if_not
+- [x] find
+- [x] find_if
+- [x] find_if_not
 - [ ] find_end
 - [ ] find_first_of
 - [ ] adjacent_find
