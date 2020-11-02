@@ -243,7 +243,7 @@ def find_if(collection: Collection, unary_predicate: UnaryPredicate) -> int:
 
 def find_if_not(collection: Collection, unary_predicate: UnaryPredicate) -> int:
     try:
-        return list(filter(lambda x: not unary_predicate(x), collection)).index(True)
+        return list(map(unary_predicate, collection)).index(False)
     except ValueError:
         return len(collection) - 1
 
