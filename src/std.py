@@ -226,6 +226,15 @@ def mismatch(
 
 
 def find(collection: Collection, target_element: Any) -> int:
+    """
+        Find the index of the first occurrence of target_element in collection
+    Args:
+        collection: A collection which to search through
+        target_element: An element to search in the collection
+
+    Returns:
+        The index of target_element's first occurrence, -1 if it was not found
+    """
     try:
         return list(
             map(operator.eq, collection, itertools.repeat(target_element))
@@ -235,6 +244,15 @@ def find(collection: Collection, target_element: Any) -> int:
 
 
 def find_if(collection: Collection, unary_predicate: UnaryPredicate) -> int:
+    """
+        Find the index of the first element in collection satisfying unary_predicate
+    Args:
+        collection: A collection which to search through
+        unary_predicate: An UnaryPredicate, which determines if the current value is our target
+
+    Returns:
+        The index of the first element which satisfies unary_predicate, -1 if no element satisfies unary_predicate
+    """
     try:
         return list(map(unary_predicate, collection)).index(True)
     except ValueError:
@@ -242,6 +260,15 @@ def find_if(collection: Collection, unary_predicate: UnaryPredicate) -> int:
 
 
 def find_if_not(collection: Collection, unary_predicate: UnaryPredicate) -> int:
+    """
+        Find the index of the first element in collection NOT satisfying unary_predicate
+    Args:
+        collection: A collection which to search through
+        unary_predicate: An UnaryPredicate, which determines if the current value is NOT our target
+
+    Returns:
+        The index of the first element which DOES NOT satisfy unary_predicate, -1 if all elements satisfy unary_predicate
+    """
     try:
         return list(map(unary_predicate, collection)).index(False)
     except ValueError:
