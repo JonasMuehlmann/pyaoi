@@ -139,6 +139,12 @@ class TestFind:
     def test_first_element(self):
         assert std.find([1, 2, 3, 4, 5], 1) == 0
 
+    def test_third_element(self):
+        assert std.find([1, 2, 3, 4, 5], 3) == 2
+
+    def test_last_element(self):
+        assert std.find([1, 2, 3, 4, 5], 5) == 4
+
     def test_empty_collection(self):
         assert std.find([], 2) == -1
 
@@ -150,6 +156,12 @@ class TestFindIf:
     def test_first_element(self):
         assert std.find_if([1, 2, 3, 4, 5], lambda x: x == 1) == 0
 
+    def test_third_element(self):
+        assert std.find_if([1, 2, 3, 4, 5], lambda x: x == 3) == 2
+
+    def test_last_element(self):
+        assert std.find_if([1, 2, 3, 4, 5], lambda x: x == 5) == 4
+
     def test_empty_collection(self):
         assert std.find_if([], lambda x: 0 < x < 5) == -1
 
@@ -160,6 +172,13 @@ class TestFindIfNot:
 
     def test_first_element(self):
         assert std.find_if_not([1, 2, 3, 4, 5], lambda x: x != 1) == 0
+
+    def test_third_element(self):
+        assert std.find_if_not([1, 1, 2, 3, 4], lambda x: x == 1) == 2
+
+
+    def test_last_element(self):
+        assert std.find_if_not([1, 1, 1, 1, 4], lambda x: x == 1) == 4
 
     def test_empty_collection(self):
         assert std.find_if_not([], lambda x: 0 < x < 5) == -1
