@@ -176,7 +176,6 @@ class TestFindIfNot:
     def test_third_element(self):
         assert std.find_if_not([1, 1, 2, 3, 4], lambda x: x == 1) == 2
 
-
     def test_last_element(self):
         assert std.find_if_not([1, 1, 1, 1, 4], lambda x: x == 1) == 4
 
@@ -185,7 +184,17 @@ class TestFindIfNot:
 
 
 class TestFindEnd:
-    pass
+    def test_last_index(self):
+        assert std.find_end([1, 2, 3, 1, 2, 3, 1, 2, 3], [1, 2, 3]) == 6
+
+    def test_first_index(self):
+        assert std.find_end([1, 2, 3], [1, 2, 3]) == 0
+
+    def test_third_index(self):
+        assert std.find_end([1, 1, 1, 2, 3], [1, 2, 3]) == 2
+
+    def test_not_present(self):
+        assert std.find_end([1, 2, 3], [1, 2, 3, 4]) == 2
 
 
 class TestFindFirstOf:

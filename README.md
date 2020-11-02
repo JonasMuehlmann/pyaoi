@@ -40,7 +40,7 @@ When a function's checkbox is NOT ticked, it is not implemented. A comment state
 - [x] find
 - [x] find_if
 - [x] find_if_not
-- [ ] find_end
+- [x] find_end
 - [ ] find_first_of
 - [ ] adjacent_find
 

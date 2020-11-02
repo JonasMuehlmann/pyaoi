@@ -135,7 +135,6 @@ def for_each_n(
         mutable_sequence[:n] = list(map(unary_function, mutable_sequence[:n]))
 
 
-# CHECK: If using collections.Counter is faster
 def count(sequence: Sequence, target: Any) -> int:
     """
     Count how often target appears in sequence
@@ -176,13 +175,17 @@ def count_if_not(iterable: Iterable, unary_predicate: UnaryPredicate) -> int:
     Returns:
         For how many items unary predicate returned False, -1 if the iterable is empty
     """
-    return -1 if not iterable else sum(map(lambda element: not unary_predicate(element), iterable))
+    return (
+        -1
+        if not iterable
+        else sum(map(lambda element: not unary_predicate(element), iterable))
+    )
 
 
 def mismatch(
     iterable1: Iterable,
     iterable2: Iterable,
-    binary_predicate: BinaryPredicate = operator.__eq__,
+    binary_predicate: BinaryPredicate = operator.eq,
 ) -> Optional[Tuple[Any, Any]]:
     """
     Find the first pair of elements from both iterables, that are considered not equal
@@ -192,7 +195,7 @@ def mismatch(
         iterable1: First iterable to use for comparison
         iterable2: Second iterable to use for comparison
         binary_predicate: A binary predicate, that returns true if the elements from both iterables are considered equal
-            If not provided, operator.__eq__ will be used as a binary_predicate
+            If not provided, operator.eq will be used as a binary_predicate
 
     Returns:
         None, if one or more iterables is empty, or they do not differ until the end of the shortest iterable.
@@ -275,8 +278,28 @@ def find_if_not(collection: Collection, unary_predicate: UnaryPredicate) -> int:
         return len(collection) - 1
 
 
-def find_end():
-    raise NotImplementedError
+def find_end(
+    collection_super: Collection,
+    collection_sub: Collection,
+    binary_predicate: BinaryPredicate = operator.eq,
+) -> int:
+    """
+    Find index of the beginning of the last occurrence of collection_sub in collection_super
+    Args:
+        collection_super: A Collection in which to search for the collection_sub
+        collection_sub: A Collection to search for in collection_super
+        binary_predicate: A BinaryPredicate used to check if an indexes elements of both collections are considered equal
+
+    Returns:
+        The index of the beginning of the last occurrence of collection_sub in collection_super,
+            or the last index in collection_super if it is empty or collection_sub is not found in it
+
+    """
+    for i in range((len(collection_super) - 1) - (len(collection_sub) - 1), -1, -1):
+        if collection_super[i : i + len(collection_sub)] == collection_sub:
+            return i
+
+    return len(collection_super) - 1
 
 
 def find_first_of():
