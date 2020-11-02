@@ -1,17 +1,17 @@
 """A pure python implementation of the C++ Standard Template Library(STL)'s algorithm header"""
 #  This file is part of python_std_algorithm.
 #  Copyright (C) 2020 Jonas Muehlmann
-# 
+#
 #      python_std_algorithm is free software: you can redistribute it and/or modify
 #      it under the terms of the GNU General Public License as published by
 #      the Free Software Foundation, either version 3 of the License, or
 #      (at your option) any later version.
-# 
+#
 #      python_std_algorithm is distributed in the hope that it will be useful,
 #      but WITHOUT ANY WARRANTY; without even the implied warranty of
 #      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #      GNU General Public License for more details.
-# 
+#
 #      You should have received a copy of the GNU General Public License
 #      along with python_std_algorithm.  If not, see <https://www.gnu.org/licenses/>.
 #
@@ -29,8 +29,7 @@
 #      along with python_std_algorithm.  If not, see <https://www.gnu.org/licenses/>.
 
 #!/usr/bin/env python3
-
-
+import itertools
 import operator
 from typing import (
     Callable,
@@ -229,7 +228,7 @@ def mismatch(
 def find(collection: Collection, target_element: Any) -> int:
     try:
         return list(
-            filter(lambda element: element == target_element, collection)
+            map(operator.eq, collection, itertools.repeat(target_element))
         ).index(True)
     except ValueError:
         return len(collection) - 1
