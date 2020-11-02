@@ -236,7 +236,7 @@ def find(collection: Collection, target_element: Any) -> int:
 
 def find_if(collection: Collection, unary_predicate: UnaryPredicate) -> int:
     try:
-        return list(filter(unary_predicate, collection)).index(True)
+        return list(map(unary_predicate, collection)).index(True)
     except ValueError:
         return len(collection) - 1
 
