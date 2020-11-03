@@ -296,7 +296,7 @@ def find_end(
 
     """
     for i in range((len(collection_super) - 1) - (len(collection_sub) - 1), -1, -1):
-        if collection_super[i : i + len(collection_sub)] == collection_sub:
+        if binary_predicate(collection_super[i : i + len(collection_sub)],collection_sub):
             return i
 
     return len(collection_super) - 1
