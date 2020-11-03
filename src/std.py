@@ -288,7 +288,7 @@ def find_end(
     Args:
         collection_super: A Collection in which to search for the collection_sub
         collection_sub: A Collection to search for in collection_super
-        binary_predicate: A BinaryPredicate used to check if an indexes elements of both collections are considered equal
+        binary_predicate: A BinaryPredicate used to check if an index's elements of both collections are considered equal
 
     Returns:
         The index of the beginning of the last occurrence of collection_sub in collection_super,
@@ -302,8 +302,28 @@ def find_end(
     return len(collection_super) - 1
 
 
-def find_first_of():
-    raise NotImplementedError
+def find_first_of(
+        collection_super: Collection,
+        collection_sub: Collection,
+        binary_predicate: BinaryPredicate = operator.eq,
+) -> int:
+    """
+    Find index of the beginning of the first occurrence of collection_sub in collection_super
+    Args:
+        collection_super: A Collection in which to search for the collection_sub
+        collection_sub: A Collection to search for in collection_super
+        binary_predicate: A BinaryPredicate used to check if an index's elements of both collections are considered equal
+
+    Returns:
+        The index of the beginning of the first occurrence of collection_sub in collection_super,
+            or the last index in collection_super if it is empty or collection_sub is not found in it
+
+    """
+    for i in range(0, (len(collection_super) - 1) - (len(collection_sub) - 1) + 1):
+        if binary_predicate(collection_super[i: i + len(collection_sub)], collection_sub):
+            return i
+
+    return len(collection_super) - 1
 
 
 def adjacent_find():

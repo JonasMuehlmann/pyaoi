@@ -198,7 +198,17 @@ class TestFindEnd:
 
 
 class TestFindFirstOf:
-    pass
+    def test_last_index(self):
+        assert std.find_first_of([1, 2, 4, 1, 2, 4, 1, 2, 3], [1, 2, 3]) == 6
+
+    def test_first_index(self):
+        assert std.find_first_of([1, 2, 3, 1, 2, 3], [1, 2, 3]) == 0
+
+    def test_third_index(self):
+        assert std.find_first_of([1, 1, 1, 2, 3, 4, 5, 6], [1, 2, 3]) == 2
+
+    def test_not_present(self):
+        assert std.find_first_of([1, 2, 3], [1, 2, 3, 4]) == 2
 
 
 class TestAdjacentFind:
