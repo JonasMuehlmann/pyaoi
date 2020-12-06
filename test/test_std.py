@@ -1,6 +1,22 @@
 #!/usr/bin/env python3
 
 
+#  This file is part of python_std_algorithm.
+#  Copyright (C) 2020 Jonas Muehlmann
+# 
+#      python_std_algorithm is free software: you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation, either version 3 of the License, or
+#      (at your option) any later version.
+# 
+#      python_std_algorithm is distributed in the hope that it will be useful,
+#      but WITHOUT ANY WARRANTY; without even the implied warranty of
+#      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#      GNU General Public License for more details.
+# 
+#      You should have received a copy of the GNU General Public License
+#      along with python_std_algorithm.  If not, see <https://www.gnu.org/licenses/>.
+
 from typing import List
 
 from src import std
@@ -199,16 +215,16 @@ class TestFindEnd:
 
 class TestFindFirstOf:
     def test_last_index(self):
-        assert std.find_first_of([1, 2, 4, 1, 2, 4, 1, 2, 3], [1, 2, 3]) == 6
+        assert std.find_first_of([1, 2, 4, 1, 2, 4, 1, 2, 3], [3, 6, 9]) == 8
 
     def test_first_index(self):
         assert std.find_first_of([1, 2, 3, 1, 2, 3], [1, 2, 3]) == 0
 
     def test_third_index(self):
-        assert std.find_first_of([1, 1, 1, 2, 3, 4, 5, 6], [1, 2, 3]) == 2
+        assert std.find_first_of([-1, -2, 1, 2, 3, 4, 5, 6], [1, 2, 3]) == 2
 
     def test_not_present(self):
-        assert std.find_first_of([1, 2, 3], [1, 2, 3, 4]) == 2
+        assert std.find_first_of(list(range(4)), list(range(5, 10))) == 3
 
 
 class TestAdjacentFind:

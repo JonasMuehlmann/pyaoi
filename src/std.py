@@ -1,6 +1,19 @@
 """A pure python implementation of the C++ Standard Template Library(STL)'s algorithm header"""
 #  This file is part of python_std_algorithm.
 #  Copyright (C) 2020 Jonas Muehlmann
+# 
+#      python_std_algorithm is free software: you can redistribute it and/or modify
+#      it under the terms of the GNU General Public License as published by
+#      the Free Software Foundation, either version 3 of the License, or
+#      (at your option) any later version.
+# 
+#      python_std_algorithm is distributed in the hope that it will be useful,
+#      but WITHOUT ANY WARRANTY; without even the implied warranty of
+#      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#      GNU General Public License for more details.
+# 
+#      You should have received a copy of the GNU General Public License
+#      along with python_std_algorithm.  If not, see <https://www.gnu.org/licenses/>.
 #
 #      python_std_algorithm is free software: you can redistribute it and/or modify
 #      it under the terms of the GNU General Public License as published by
@@ -239,6 +252,7 @@ def find(collection: Collection, target_element: Any) -> int:
         The index of target_element's first occurrence, -1 if it was not found
     """
     try:
+        # CHECK: alternatives for list.index, for possibly better speed balance in best or average case usage
         return list(
             map(operator.eq, collection, itertools.repeat(target_element))
         ).index(True)
@@ -303,27 +317,28 @@ def find_end(
 
 
 def find_first_of(
-        collection_super: Collection,
-        collection_sub: Collection,
+        values_in: Collection,
+        values_from: Collection,
         binary_predicate: BinaryPredicate = operator.eq,
 ) -> int:
     """
-    Find index of the beginning of the first occurrence of collection_sub in collection_super
+    Find first index in values_in at which an element of values_from occurs
     Args:
-        collection_super: A Collection in which to search for the collection_sub
-        collection_sub: A Collection to search for in collection_super
+        values_in: A Collection in which to search for values of values_from
+        values_from: A Collection of values to search for in values_in
         binary_predicate: A BinaryPredicate used to check if an index's elements of both collections are considered equal
 
     Returns:
-        The index of the beginning of the first occurrence of collection_sub in collection_super,
-            or the last index in collection_super if it is empty or collection_sub is not found in it
+        The first index in values_in at which an element of values_from occurs
+            or the last index in  values_in if it is empty or no element from values_from is found in it
 
     """
-    for i in range(0, (len(collection_super) - 1) - (len(collection_sub) - 1) + 1):
-        if binary_predicate(collection_super[i: i + len(collection_sub)], collection_sub):
-            return i
+    for i, element_in in enumerate(values_in):
+        for element_from in values_from:
+            if binary_predicate(element_in, element_from):
+                return i
 
-    return len(collection_super) - 1
+    return len(values_in) - 1
 
 
 def adjacent_find(
