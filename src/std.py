@@ -30,7 +30,6 @@
 
 #!/usr/bin/env python3
 import itertools
-import more_itertools
 import operator
 from typing import (
     Callable,
@@ -297,18 +296,16 @@ def find_end(
 
     """
     for i in range((len(collection_super) - 1) - (len(collection_sub) - 1), -1, -1):
-        if binary_predicate(
-            collection_super[i : i + len(collection_sub)], collection_sub
-        ):
+        if binary_predicate(collection_super[i : i + len(collection_sub)],collection_sub):
             return i
 
     return len(collection_super) - 1
 
 
 def find_first_of(
-    collection_super: Collection,
-    collection_sub: Collection,
-    binary_predicate: BinaryPredicate = operator.eq,
+        collection_super: Collection,
+        collection_sub: Collection,
+        binary_predicate: BinaryPredicate = operator.eq,
 ) -> int:
     """
     Find index of the beginning of the first occurrence of collection_sub in collection_super
@@ -323,26 +320,14 @@ def find_first_of(
 
     """
     for i in range(0, (len(collection_super) - 1) - (len(collection_sub) - 1) + 1):
-        if binary_predicate(
-            collection_super[i : i + len(collection_sub)], collection_sub
-        ):
+        if binary_predicate(collection_super[i: i + len(collection_sub)], collection_sub):
             return i
 
     return len(collection_super) - 1
 
 
-def adjacent_find(
-    collection: Collection, binary_predicate: BinaryPredicate = operator.eq
-) -> int:
-    if not collection:
-        return -1
-    try:
-        return (
-            list(map(binary_predicate, collection[::2], collection[1::2])).index(True)
-            * 2
-        )
-    except ValueError:
-        return len(collection) - 1
+def adjacent_find():
+    raise NotImplementedError
 
 
 def search():
