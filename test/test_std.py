@@ -212,7 +212,17 @@ class TestFindFirstOf:
 
 
 class TestAdjacentFind:
-    pass
+    def test_not_present(self):
+        assert std.adjacent_find([1, 2, 3, 4, 5]) == 4
+
+    def test_empty(self):
+        assert std.adjacent_find([]) == -1
+
+    def test_first_pair(self):
+        assert std.adjacent_find([1, 1, 2, 3, 4, 5]) == 0
+
+    def test_last_pair(self):
+        assert std.adjacent_find([1, 2, 3, 4, 5, 5]) == 4
 
 
 class TestSearch:

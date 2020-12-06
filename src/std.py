@@ -326,8 +326,18 @@ def find_first_of(
     return len(collection_super) - 1
 
 
-def adjacent_find():
-    raise NotImplementedError
+def adjacent_find(
+    collection: Collection, binary_predicate: BinaryPredicate = operator.eq
+) -> int:
+    if not collection:
+        return -1
+    try:
+        return (
+            list(map(binary_predicate, collection[::2], collection[1::2])).index(True)
+            * 2
+        )
+    except ValueError:
+        return len(collection) - 1
 
 
 def search():
