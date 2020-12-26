@@ -331,14 +331,23 @@ def find_first_of(
 
 
 def adjacent_find(
-    collection: Collection, binary_predicate: BinaryPredicate = operator.eq
+        collection: Collection, binary_predicate: BinaryPredicate = operator.eq
 ) -> int:
+    """
+
+    Args:
+        collection: a collection to search through
+        binary_predicate: a binary predicate to evaluate the equality of adjacent elements
+
+    Returns:
+
+    """
     if not collection:
         return -1
     try:
         return (
-            list(map(binary_predicate, collection[::2], collection[1::2])).index(True)
-            * 2
+                list(map(binary_predicate, collection[::2], collection[1::2])).index(True)
+                * 2
         )
     except ValueError:
         return len(collection) - 1
