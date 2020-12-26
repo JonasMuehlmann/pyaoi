@@ -8,20 +8,22 @@ python:
 install:
   - pip install -r dev-requirements.txt
 
-script:
-  - pytest
+script: pytest
 
 notifications:
   webhooks:
-    urls:
-      - https://webhooks.gitter.im/e/c1ea8f931105bfa827c1
+    urls: https://webhooks.gitter.im/e/c1ea8f931105bfa827c1
     on_success: change
     on_failure: always
     on_start: never
 
-after_success:
-  - git config --global user.name "semantic-release (via TravisCI)"
-  - git config --global user.email "semantic-release@travis"
-  - pip install python-semantic-release
-  - semantic-release publish
-  - bash mark_implemented_functions.sh
+jobs:
+  include:
+    - stage: deploy
+    python: "3.9"
+    script:
+        - git config --global user.name "semantic-release (via TravisCI)"
+        - git config --global user.email "semantic-release@travis"
+        - pip install python-semantic-release
+        - semantic-release publish
+        - bash mark_implemented_functions.sh
