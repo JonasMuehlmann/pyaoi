@@ -1,5 +1,5 @@
-"""A pure python implementation of the C++ Standard Template Library(STL)'s algorithm header"""
-#  This file is part of python_std_algorithm.
+"""A collection of functions operating on iterables"""
+#  This file is part of pyaoi.
 #  Copyright (C) 2020 Jonas Muehlmann
 #
 #      pyaoi is free software: you can redistribute it and/or modify
@@ -305,8 +305,8 @@ def find_end(
 
 
 def find_first_of(
-        collection_super: Collection,
-        collection_sub: Collection,
+        values_in: Collection,
+        values_from: Collection,
         binary_predicate: BinaryPredicate = operator.eq,
 ) -> int:
     """

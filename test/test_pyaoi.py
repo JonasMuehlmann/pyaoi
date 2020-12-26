@@ -171,16 +171,16 @@ class TestFindEnd:
 
 class TestFindFirstOf:
     def test_last_index(self):
-        assert pyaoi.find_first_of([1, 2, 4, 1, 2, 4, 1, 2, 3], [1, 2, 3]) == 6
+        assert pyaoi.find_first_of([1, 2, 4, 1, 2, 4, 1, 2, 3], [3, 6, 9]) == 8
 
     def test_first_index(self):
         assert pyaoi.find_first_of([1, 2, 3, 1, 2, 3], [1, 2, 3]) == 0
 
     def test_third_index(self):
-        assert pyaoi.find_first_of([1, 1, 1, 2, 3, 4, 5, 6], [1, 2, 3]) == 2
+        assert pyaoi.find_first_of([-1, -2, 1, 2, 3, 4, 5, 6], [1, 2, 3]) == 2
 
     def test_not_present(self):
-        assert pyaoi.find_first_of([1, 2, 3], [1, 2, 3, 4]) == 2
+        assert pyaoi.find_first_of(list(range(4)), list(range(5, 10))) == 3
 
 
 class TestAdjacentFind:
