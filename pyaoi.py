@@ -353,309 +353,65 @@ def adjacent_find(
         return len(collection) - 1
 
 
-def search():
-    raise NotImplementedError
-
-
-def search_n():
-    raise NotImplementedError
-
-
-def copy():
-    raise NotImplementedError
-
-
-def copy_if():
-    raise NotImplementedError
-
-
-def copy_n():
-    raise NotImplementedError
-
-
-def copy_backward():
-    raise NotImplementedError
-
-
-def move():
-    raise NotImplementedError
-
-
-def move_backward():
-    raise NotImplementedError
-
-
-def fill():
-    raise NotImplementedError
-
-
-def fill_n():
-    raise NotImplementedError
-
-
-def transform():
-    raise NotImplementedError
-
-
-def generate():
-    raise NotImplementedError
-
-
-def generate_n():
-    raise NotImplementedError
-
-
-def remove():
-    raise NotImplementedError
-
-
-def remove_if():
-    raise NotImplementedError
-
-
-def remove_copy():
-    raise NotImplementedError
-
-
-def remove_copy_if():
-    raise NotImplementedError
-
-
-def replace():
-    raise NotImplementedError
-
-
-def replace_if():
-    raise NotImplementedError
-
-
-def replace_copy():
-    raise NotImplementedError
-
-
-def replace_copy_if():
-    raise NotImplementedError
-
-
-def swap():
-    raise NotImplementedError
-
-
-def swap_ranges():
-    raise NotImplementedError
-
-
-def iter_swap():
-    raise NotImplementedError
-
-
-def reverse():
-    raise NotImplementedError
-
-
-def reverse_copy():
-    raise NotImplementedError
-
-
-def rotate():
-    raise NotImplementedError
-
-
-def rotate_copy():
-    raise NotImplementedError
-
-
-def shift_left():
-    raise NotImplementedError
-
-
-def shift_right():
-    raise NotImplementedError
-
-
-def random_shuffle():
-    raise NotImplementedError
-
-
-def shuffle():
-    raise NotImplementedError
-
-
-def sample():
-    raise NotImplementedError
-
-
-def unique():
-    raise NotImplementedError
-
-
-def unique_copy():
-    raise NotImplementedError
-
-
-def is_partitioned():
-    raise NotImplementedError
-
-
-def partition():
-    raise NotImplementedError
-
-
-def partition_copy():
-    raise NotImplementedError
-
-
-def stable_partition():
-    raise NotImplementedError
-
-
-def partition_point():
-    raise NotImplementedError
-
-
-def is_sorted():
-    raise NotImplementedError
-
-
-def is_sorted_until():
-    raise NotImplementedError
-
-
-def sort():
-    raise NotImplementedError
-
-
-def partial_sort():
-    raise NotImplementedError
-
-
-def partial_sort_copy():
-    raise NotImplementedError
-
-
-def stable_sort():
-    raise NotImplementedError
-
-
-def nth_element():
-    raise NotImplementedError
-
-
-def lower_bound():
-    raise NotImplementedError
-
-
-def upper_bound():
-    raise NotImplementedError
-
-
-def binary_search():
-    raise NotImplementedError
-
-
-def equal_range():
-    raise NotImplementedError
-
-
-def merge():
-    raise NotImplementedError
-
-
-def implace_merge():
-    raise NotImplementedError
-
-
-def includes():
-    raise NotImplementedError
-
-
-def set_difference():
-    raise NotImplementedError
-
-
-def set_intersection():
-    raise NotImplementedError
-
-
-def set_symmetric_difference():
-    raise NotImplementedError
-
-
-def set_union():
-    raise NotImplementedError
-
-
-def is_heap():
-    raise NotImplementedError
-
-
-def is_heap_until():
-    raise NotImplementedError
-
-
-def make_heap():
-    raise NotImplementedError
-
-
-def push_heap():
-    raise NotImplementedError
-
-
-def pop_heap():
-    raise NotImplementedError
-
-
-def sort_heap():
-    raise NotImplementedError
-
-
-def max():
-    raise NotImplementedError
-
-
-def max_element():
-    raise NotImplementedError
-
-
-def min():
-    raise NotImplementedError
-
-
-def min_element():
-    raise NotImplementedError
-
-
-def minmax():
-    raise NotImplementedError
-
-
-def minmax_element():
-    raise NotImplementedError
-
-
-def clamp():
-    raise NotImplementedError
-
-
-def equal():
-    raise NotImplementedError
-
-
-def lexicographical_compare():
-    raise NotImplementedError
-
-
-def lexicographical_compare_threeway():
-    raise NotImplementedError
-
-
-def is_permutation():
-    raise NotImplementedError
-
-
-def next_permutation():
-    raise NotImplementedError
-
-
-def prev_permutation():
-    raise NotImplementedError
+def search(
+        collection_super: Collection,
+        collection_sub: Collection,
+        binary_predicate: BinaryPredicate = operator.eq,
+) -> int:
+    """
+        Search for the first occurrence of collection_sub in collection_super
+    Args:
+        collection_super: A collection to search in
+        collection_sub: A collection to search for in collection_super
+        binary_predicate: A binary predicate to evaluate the equality of compared items
+
+    Returns:
+        -The index of the beginning of the first occurrence of collection_sub in collection_super
+            -If not found, returns the last index of collection_super
+            -If any collection is empty, returns -1
+    """
+
+    if not collection_sub:
+        return -1
+
+    for i, element_super in enumerate(collection_super):
+        for element_super, element_sub in zip(collection_super[i:], collection_sub):
+            if not binary_predicate(element_super, element_sub):
+                break
+            else:
+                return i
+
+    return len(collection_super) - 1
+
+
+def search_n(
+        collection: Collection,
+        value: Any,
+        n: int,
+        binary_predicate: BinaryPredicate = operator.eq,
+):
+    """
+        Search for the first occurrence of n repetitions of value in collection
+    Args:
+        collection: A collection to search in
+        value: any object to search for in colletcion
+        n: How many times, counting from the beginning, value has to be repeated
+        binary_predicate: A binary predicate to evaluate the equality of consecutive items
+
+    Returns:
+        -The index of the beginning of the first n repititions of value in collection
+            -If not found, returns the last index of collection_super
+            -If collection is empty, returns -1
+    """
+
+    if not collection:
+        return -1
+
+    for i, element in enumerate(collection):
+        for element in collection[i:]:
+            if not binary_predicate(element, value):
+                break
+            else:
+                return i
+
+    return len(collection) - 1
