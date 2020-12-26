@@ -5,7 +5,7 @@ import setuptools
 with open("README.md", "r", encoding="utf-8") as readme:
     long_description = readme.read()
 
-__version__ = "0.0.0"
+__version__ = "0.1.0"
 
 setuptools.setup(
     name="pyaoi",
