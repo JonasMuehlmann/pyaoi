@@ -3,6 +3,7 @@ python:
   - "3.6"
   - "3.7"
   - "3.8"
+  - "3.9"
 
 install:
   - pip install -r dev-requirements.txt
@@ -17,3 +18,10 @@ notifications:
     on_success: change
     on_failure: always
     on_start: never
+
+after_success:
+  - git config --global user.name "semantic-release (via TravisCI)"
+  - git config --global user.email "semantic-release@travis"
+  - pip install python-semantic-release
+  - semantic-release publish
+  - bash mark_implemented_functions.sh
