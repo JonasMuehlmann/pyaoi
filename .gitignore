@@ -1,4 +1,12 @@
+__pycache__
 .idea
 .benchmarks
 doc
 .pytest_cache
+/upload_package.sh
+/.venv/
+/dist/
+/build/
+*.egg-info
+.coverage
+/set_min_py_version.sh
