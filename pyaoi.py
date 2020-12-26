@@ -1,34 +1,34 @@
-"""A pure python implementation of the C++ Standard Template Library(STL)'s algorithm header"""
-#  This file is part of python_std_algorithm.
+"""A collection of useful functions operating on iterables"""
+#  This file is part of pyaoi.
 #  Copyright (C) 2020 Jonas Muehlmann
 #
-#      python_std_algorithm is free software: you can redistribute it and/or modify
+#      pyaoi is free software: you can redistribute it and/or modify
 #      it under the terms of the GNU General Public License as published by
 #      the Free Software Foundation, either version 3 of the License, or
 #      (at your option) any later version.
 #
-#      python_std_algorithm is distributed in the hope that it will be useful,
+#      pyaoi is distributed in the hope that it will be useful,
 #      but WITHOUT ANY WARRANTY; without even the implied warranty of
 #      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #      GNU General Public License for more details.
 #
 #      You should have received a copy of the GNU General Public License
-#      along with python_std_algorithm.  If not, see <https://www.gnu.org/licenses/>.
+#      along with pyaoi.  If not, see <https://www.gnu.org/licenses/>.
 #
-#      python_std_algorithm is free software: you can redistribute it and/or modify
+#      pyaoi is free software: you can redistribute it and/or modify
 #      it under the terms of the GNU General Public License as published by
 #      the Free Software Foundation, either version 3 of the License, or
 #      (at your option) any later version.
 #
-#      python_std_algorithm is distributed in the hope that it will be useful,
+#      pyaoi is distributed in the hope that it will be useful,
 #      but WITHOUT ANY WARRANTY; without even the implied warranty of
 #      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #      GNU General Public License for more details.
 #
 #      You should have received a copy of the GNU General Public License
-#      along with python_std_algorithm.  If not, see <https://www.gnu.org/licenses/>.
+#      along with pyaoi.  If not, see <https://www.gnu.org/licenses/>.
 
-#!/usr/bin/env python3
+# !/usr/bin/env python3
 import itertools
 import operator
 from typing import (
@@ -296,7 +296,9 @@ def find_end(
 
     """
     for i in range((len(collection_super) - 1) - (len(collection_sub) - 1), -1, -1):
-        if binary_predicate(collection_super[i : i + len(collection_sub)],collection_sub):
+        if binary_predicate(
+                collection_super[i: i + len(collection_sub)], collection_sub
+        ):
             return i
 
     return len(collection_super) - 1
@@ -320,7 +322,9 @@ def find_first_of(
 
     """
     for i in range(0, (len(collection_super) - 1) - (len(collection_sub) - 1) + 1):
-        if binary_predicate(collection_super[i: i + len(collection_sub)], collection_sub):
+        if binary_predicate(
+                collection_super[i: i + len(collection_sub)], collection_sub
+        ):
             return i
 
     return len(collection_super) - 1

@@ -1,23 +1,24 @@
-# Python_std_algorithm
-[![Join the chat at https://gitter.im/python_std_algorithm/community](https://badges.gitter.im/python_std_algorithm/community.svg)](https://gitter.im/python_std_algorithm/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.com/JonasMuehlmann/python_std_algorithm.svg?branch=master)](https://travis-ci.com/JonasMuehlmann/python_std_algorithm)
+# PyAoI (Python Algorithms on Iterables)
 
-This project is a pure python implementation of the [algorithm header](https://en.cppreference.com/w/cpp/algorithm) from the C++ standard template library (STL for short).
+[![Join the chat at https://gitter.im/pyaoi/community](https://badges.gitter.im/pyaoi/community.svg)](https://gitter.im/pyaoi/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.com/JonasMuehlmann/pyaoi.svg?branch=master)](https://travis-ci.com/JonasMuehlmann/pyaoi) ![img](https://img.shields.io/badge/semver-2.0.0-green) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
+This project provides a bunch of functions to interact with iterables, it is inspired by
+the [algorithm header](https://en.cppreference.com/w/cpp/algorithm) from the C++ standard template library (STL for
+short).
 
 ## Installation
-A pypi package will be available soon
+
+```pip install pyaoi```
+
 ## How to use
 
-All functions live in the ```std``` namespace, you can import it with ```import std``` and then call the functions like this: ```std.all_of()```
+All functions live in the ```pyaoi``` namespace, you can import it with ```import pyaoi``` and then call the functions
+like this: ```pyaio.all_of()```
 
 ## Implemented functions
 
-The list of functions is taken from https://en.cppreference.com/w/cpp/algorithm
-
-When a function's checkbox is ticked, it is implemented by this library.
-
-When a function's checkbox is NOT ticked, it is not implemented. A comment states a reason why the function can not be implemented properly.
-
+The following list shows planned functions and whether they are implemented yet. Feel free to make a PR for a listed
+function's implementation. This list is subject to change at any time.
 <details> <summary>Click to expand!</summary>
 <p>
 
@@ -28,25 +29,23 @@ When a function's checkbox is NOT ticked, it is not implemented. A comment state
 - [x] none_of
 
 
-- [x] for_each ***Has an extra parameter readonly due to python limitations***
-- [x] for_each_n ***Has an extra parameter readonly due to python limitations***
+- [x] for_each
+- [x] for_each_n
 
 - [x] count
 - [x] count_if
-- [x] count_if_not ***Not implemented in STL, but seems fitting***
 
 - [x] mismatch
 
 - [x] find
 - [x] find_if
-- [x] find_if_not
 - [x] find_end
 - [x] find_first_of
-- [ ] adjacent_find
+- [x] adjacent_find
 
 
-- [ ] search
-- [ ] search_n
+- [x] search
+- [x] search_n
 
 ### Modifying sequence operations
 
@@ -54,10 +53,10 @@ When a function's checkbox is NOT ticked, it is not implemented. A comment state
 - [ ] copy_if
 - [ ] copy_n
 - [ ] copy_backward
-
-
-- [ ] move
-- [ ] move_backward
+- [ ] copy_replace
+- [ ] copy_replace_if
+- [ ] copy_except
+- [ ] copy_except_if
 
 
 - [ ] fill
@@ -67,28 +66,13 @@ When a function's checkbox is NOT ticked, it is not implemented. A comment state
 - [ ] transform
 
 
-- [ ] generate
-- [ ] generate_n
-
-
 - [ ] remove
 - [ ] remove_if
-- [ ] remove_copy
-- [ ] remove_copy_if
-
 
 - [ ] replace
 - [ ] replace_if
-- [ ] replace_copy
-- [ ] replace_copy_if
 
 
-- [ ] swap
-- [ ] swap_ranges
-- [ ] iter_swap
-
-
-- [ ] reverse
 - [ ] reverse_copy
 
 
@@ -130,7 +114,6 @@ When a function's checkbox is NOT ticked, it is not implemented. A comment state
 - [ ] is_sorted_until
 
 
-- [ ] sort
 - [ ] partial_sort
 - [ ] partial_sort_copy
 - [ ] stable_sort
@@ -181,20 +164,15 @@ When a function's checkbox is NOT ticked, it is not implemented. A comment state
 
 ### Minimum/maximum operations
 
-- [ ] max
-- [ ] max_element
-- [ ] min
-- [ ] min_element
+- [ ] max_index
+- [ ] min_index
 - [ ] minmax
-- [ ] minmax_element
+- [ ] minmax_index
 
 
 - [ ] clamp
 
 ### Comparison operations
-
-- [ ] equal
-
 
 - [ ] lexicographical_compare
 - [ ] lexicographical_compare_threeway
@@ -218,7 +196,8 @@ Please familiarise yourself with this project's [code of conduct](CODE_OF_CONDUC
 ## Getting help
 
 1. Read the docs
-2. Get in touch with other contributors at [gitter](https://gitter.im/python_std_algorithm/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+2. Get in touch with other contributors
+   at [gitter](https://gitter.im/pyaoi/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 2. If you think you found a bug, or documentation could be improved, please open an issue
 
 ## License
