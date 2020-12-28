@@ -12,7 +12,7 @@ script: pytest
 
 notifications:
   webhooks:
-    urls: https://webhooks.gitter.im/e/c1ea8f931105bfa827c1
+    urls: https://webhooks.gitter.im/e/cd10585c8f9dc98ebec2
     on_success: change
     on_failure: always
     on_start: never
@@ -27,4 +27,3 @@ jobs:
         - pip install python-semantic-release
         - semantic-release publish
         - bash mark_implemented_functions.sh
-        - pre-commit autoupdate
