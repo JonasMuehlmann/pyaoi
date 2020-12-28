@@ -1,6 +1,7 @@
 #!/bin/env python3
+# noqa: D100
 
-import setuptools
+import setuptools  # type: ignore
 
 with open("README.md", "r", encoding="utf-8") as readme:
     long_description = readme.read()
@@ -26,5 +27,5 @@ setuptools.setup(
         "Topic :: Software Development :: Libraries",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
-    python_requires='>=3.6',
+    python_requires=">=3.6",
 )
