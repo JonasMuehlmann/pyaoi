@@ -8,35 +8,35 @@ import pyaoi
 
 class TestAllOf:
     def test_empty(self):
-        assert pyaoi.all_of([], None) == True
+        assert pyaoi.all_of([], None)
 
     def test_true_condition(self):
-        assert pyaoi.all_of([1, 2, 3, 4, 5], lambda x: x > 0) == True
+        assert pyaoi.all_of([1, 2, 3, 4, 5], lambda x: x > 0)
 
     def test_false_condition(self):
-        assert pyaoi.all_of([0, 2, 3, 4, 5], lambda x: x > 0) == False
+        assert not pyaoi.all_of([0, 2, 3, 4, 5], lambda x: x > 0)
 
 
 class TestAnyOf:
     def test_empty(self):
-        assert pyaoi.any_of([], None) == False
+        assert not pyaoi.any_of([], None)
 
     def test_true_condition(self):
-        assert pyaoi.any_of([1, 2, 3, 4, 5], lambda x: x > 0) == True
+        assert pyaoi.any_of([1, 2, 3, 4, 5], lambda x: x > 0)
 
     def test_false_condition(self):
-        assert pyaoi.any_of([0, 2, 3, 4, 5], lambda x: x > 0) == True
+        assert pyaoi.any_of([0, 2, 3, 4, 5], lambda x: x > 0)
 
 
 class TestNoneOf:
     def test_empty(self):
-        assert pyaoi.none_of([], None) == True
+        assert pyaoi.none_of([], None)
 
     def test_true_condition(self):
-        assert pyaoi.none_of([1, 2, 3, 4, 5], lambda x: x > 0) == False
+        assert not pyaoi.none_of([1, 2, 3, 4, 5], lambda x: x > 0)
 
     def test_false_condition(self):
-        assert pyaoi.none_of([0, 2, 3, 4, 5], lambda x: x > 0) == True
+        assert pyaoi.none_of([0, 2, 3, 4, 5], lambda x: x > 0)
 
 
 class TestForEach:
@@ -49,15 +49,15 @@ class TestForEach:
 
     def test_sum(self):
         collection: List[int] = [1, 2, 3, 4, 5]
-        sum: int = 0
+        _sum: int = 0
 
-        def _add(x: int):
-            nonlocal sum
-            sum += x
+        def _add(addend: int):
+            nonlocal _sum
+            _sum += addend
 
         pyaoi.for_each(collection, _add)
 
-        assert sum == 15 and collection == [1, 2, 3, 4, 5]
+        assert _sum == 15 and collection == [1, 2, 3, 4, 5]
 
 
 class TestForEachN:
@@ -71,15 +71,15 @@ class TestForEachN:
     def test_sum(self):
         collection: List[int] = [1, 2, 3, 4, 5]
 
-        sum: int = 0
+        _sum: int = 0
 
-        def _add(x: int):
-            nonlocal sum
-            sum += x
+        def _add(addend: int):
+            nonlocal _sum
+            _sum += addend
 
         pyaoi.for_each_n(collection, _add, 2)
 
-        assert sum == 3 and collection == [1, 2, 3, 4, 5]
+        assert _sum == 3 and collection == [1, 2, 3, 4, 5]
 
 
 class TestCount:
