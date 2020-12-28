@@ -13,6 +13,9 @@ Below you will find instructions on how to contribute.
    6. Install dependencies with ```pip install -r dev-requirements.txt```
    7. Create a new branch with ```git checkout -b your_branch_name```
    8. Set the commit message template with ```git config commit.template .commit_template.txt```
+      - Make sure commented out lines are removed with ```git config commit.cleanup strip```
+      - Set the comment char with ```git config --global core.commentChar \#```
+   9. Install the pre-commit hooks with ```pre-commit install```
 
 5. Work on the code
 6. If you implemented new functionality, write tests to confirm the validity of your new code and preferably:
