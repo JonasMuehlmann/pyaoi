@@ -16,6 +16,7 @@ Below you will find instructions on how to contribute.
       - Make sure commented out lines are removed with ```git config commit.cleanup strip```
       - Set the comment char with ```git config --global core.commentChar \#```
    9. Install the pre-commit hooks with ```pre-commit install```
+   10. Activate commit-msh stage with ```pre-commit install --hook-type commit-msg```
 
 5. Work on the code
 6. If you implemented new functionality, write tests to confirm the validity of your new code and preferably:
