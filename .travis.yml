@@ -6,7 +6,7 @@ python:
   - "3.9"
 
 install:
-  - pip install -r dev-requirements.txt
+  - pip install pytest
 
 script: pytest
 
@@ -20,10 +20,11 @@ notifications:
 jobs:
   include:
     - stage: deploy
-    python: "3.9"
+    python: "3.6"
     script:
         - git config --global user.name "semantic-release (via TravisCI)"
         - git config --global user.email "semantic-release@travis"
         - pip install python-semantic-release
         - semantic-release publish
         - bash mark_implemented_functions.sh
+        - pre-commit autoupdate
