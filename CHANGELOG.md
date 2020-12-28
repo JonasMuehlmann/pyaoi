@@ -2,6 +2,19 @@
 
 <!--next-version-placeholder-->
 
+## v1.0.0 (2020-12-28)
+### Breaking
+* Parameter n of functions for_each_n() has been renamed to num_elements ([`c788046`](https://github.com/JonasMuehlmann/pyaoi/commit/c788046bfa057609c58d6e39d1e0ba8b11cc23bb))
+* Parameters iterable1 and iterable2 of function mismatch() has been renamed to sequence1 and sequence2 ([`c788046`](https://github.com/JonasMuehlmann/pyaoi/commit/c788046bfa057609c58d6e39d1e0ba8b11cc23bb))
+* Parameter collection of function adjacent_find() has been renamed to sequence ([`c788046`](https://github.com/JonasMuehlmann/pyaoi/commit/c788046bfa057609c58d6e39d1e0ba8b11cc23bb))
+* Parameters collection_super and collection_sub of function search() have been renamed to sequence_super and sequence_sub ([`c788046`](https://github.com/JonasMuehlmann/pyaoi/commit/c788046bfa057609c58d6e39d1e0ba8b11cc23bb))
+* Parameter sequence of function search_n() has been renamed to sequence ([`c788046`](https://github.com/JonasMuehlmann/pyaoi/commit/c788046bfa057609c58d6e39d1e0ba8b11cc23bb))
+* Parameter n of function search_n() has been renamed to num_elements  ([`c788046`](https://github.com/JonasMuehlmann/pyaoi/commit/c788046bfa057609c58d6e39d1e0ba8b11cc23bb))
+
+### Documentation
+* Add instructions to CONTRIBUTING.md ([`051a6c2`](https://github.com/JonasMuehlmann/pyaoi/commit/051a6c2eea10a9337b71e9d7f44bc5d7026bc82d))
+* Add extra instructions to CONTRIBUTING.md ([`dce131b`](https://github.com/JonasMuehlmann/pyaoi/commit/dce131ba2bde57bbb1fcb8874ea4e633214a4e32))
+
 ## v0.1.0 (2020-12-26)
 ### Feature
 * Implement search() and search_n() ([`e3a3fdb`](https://github.com/JonasMuehlmann/pyaoi/commit/e3a3fdbc1bb2d75bad704d78fcbf51843d88b339))
