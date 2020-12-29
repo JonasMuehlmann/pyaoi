@@ -39,13 +39,13 @@ from typing import (
     Tuple,
     Optional,
     Iterable,
-    MutableSequence,
     Collection,
     Sequence,
 )
 
 UnaryPredicate = Callable[[Any], bool]
 """A callable that takes one argument and returns a bool"""
+
 BinaryPredicate = Callable[[Any, Any], bool]
 """A callable that takes two arguments and returns a bool"""
 
@@ -93,45 +93,37 @@ def none_of(iterable: Iterable, unary_predicate: UnaryPredicate) -> bool:
 
 
 def for_each(
-    mutable_sequence: MutableSequence,
+    iterable: Iterable,
     unary_function: UnaryFunction,
-    readonly: bool = True,
 ) -> None:
-    """Apply an unary function to each element in the mutable_sequence, modifying the elements.
+    """Apply an unary function to each element in the iterable.
+
+    This function has read-only access to the iterable
 
     Args:
-        mutable_sequence: A mutable iterable to apply the unary_function to
-        unary_function: An unary function to apply to each element in the mutable_sequence
-        readonly: indicates whether the mutable_sequence is intended to be read or modified,defaults to True
+        iterable: An iterable to apply the unary_function to
+        unary_function: An unary function to apply to each element in the iterable
     """
-    if readonly:
-        for element in mutable_sequence:
-            unary_function(element)
-    else:
-        mutable_sequence[:] = list(map(unary_function, mutable_sequence))
+    for element in iterable:
+        unary_function(element)
 
 
 def for_each_n(
-    mutable_sequence: MutableSequence,
+    sequence: Sequence,
     unary_function: UnaryFunction,
     num_elements: int,  # noqa: VNE001,C0103
-    readonly: bool = True,
 ) -> None:
-    """Apply an unary function to the first num_elements elements in the mutable_sequence, modifying the elements.
+    """Apply an unary function to the first num_elements elements in the sequence, modifying the elements.
+
+    This function has read-only access to the sequence
 
     Args:
-        mutable_sequence: A mutable iterable to apply the unary_function to
-        unary_function: An unary function to apply to each element in the mutable_sequence
+        sequence: A sequence to apply the unary_function to
+        unary_function: An unary function to apply to each element in the sequence
         num_elements: A number indicating the number of elements (counted from the start) to apply the unary_function to
-        readonly: indicates whether the mutable_sequence is intended to be read or modified,defaults to True
     """
-    if readonly:
-        for element in mutable_sequence[:num_elements]:
-            unary_function(element)
-    else:
-        mutable_sequence[:num_elements] = list(
-            map(unary_function, mutable_sequence[:num_elements])
-        )
+    for element in sequence[:num_elements]:
+        unary_function(element)
 
 
 def count(sequence: Sequence, target: Any) -> int:

@@ -39,14 +39,7 @@ class TestNoneOf:
         assert pyaoi.none_of([0, 2, 3, 4, 5], lambda x: x > 0)
 
 
-class TestForEach:
-    def test_increment(self):
-        collection: List[int] = [1, 2, 3, 4, 5]
-
-        pyaoi.for_each(collection, lambda x: x + 1, False)
-
-        assert collection == [2, 3, 4, 5, 6]
-
+class TestForEach:  # noqa: R0903
     def test_sum(self):
         collection: List[int] = [1, 2, 3, 4, 5]
         _sum: int = 0
@@ -60,14 +53,7 @@ class TestForEach:
         assert _sum == 15 and collection == [1, 2, 3, 4, 5]
 
 
-class TestForEachN:
-    def test_increment(self):
-        collection: List[int] = [1, 2, 3, 4, 5]
-
-        pyaoi.for_each_n(collection, lambda x: x + 1, 2, False)
-
-        assert collection == [2, 3, 3, 4, 5]
-
+class TestForEachN:  # noqa: R0903
     def test_sum(self):
         collection: List[int] = [1, 2, 3, 4, 5]
 
