@@ -194,7 +194,7 @@ class TestFindFirstOf:
 
 class TestAdjacentFind:
     def test_not_present(self):
-        assert pyaoi.adjacent_find([1, 2, 3, 4, 5]) == 4
+        assert pyaoi.adjacent_find([1, 2, 3, 4, 5]) == -1
 
     def test_empty(self):
         assert pyaoi.adjacent_find([]) == -1

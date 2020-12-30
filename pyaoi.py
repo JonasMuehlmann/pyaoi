@@ -274,7 +274,7 @@ def find_end(
     Args:
         collection_super: A Collection in which to search for the collection_sub
         collection_sub: A Collection to search for in collection_super
-        binary_predicate: A BinaryPredicate used to check if an index's elements of both collections are considered equal
+        binary_predicate: A BinaryPredicate used to check if an index's elements of both collections are considered equal, defaults to: operator.eq
 
     Returns:
         The index of the beginning of the last occurrence of collection_sub in collection_super,
@@ -305,7 +305,7 @@ def find_first_of(
     Args:
         iterable_super: A Iterable in which to search for values of iterable_sub
         iterable_sub: A Iterable of values to search for in values_in
-        binary_predicate: A BinaryPredicate used to check if an index's elements of both Iterables are considered equal
+        binary_predicate: A BinaryPredicate used to check if an index's elements of both Iterables are considered equal, defaults to: operator.eq
 
     Returns:
         The first index in values_in at which an element of iterable_sub occurs,
@@ -329,13 +329,11 @@ def adjacent_find(
 
     Args:
         sequence: a sequence to search through
-        binary_predicate: a binary predicate to evaluate the equality of adjacent elements
+        binary_predicate: a binary predicate to evaluate the equality of adjacent elements, defaults to: operator.eq
 
     Returns:
         The first index at which two adjacent elements are considered equal,
-            or the last index, if no two adjacent elements are considered equal,
-            or -1 if the sequence is empty
-
+            or -1 if the sequence is empty or no two adjacent elements are considered equal
     """
     if not sequence:
         return -1
@@ -346,7 +344,7 @@ def adjacent_find(
             list(map(binary_predicate, sequence[::2], sequence[1::2])).index(True) * 2
         )
     except ValueError:
-        return len(sequence) - 1
+        return -1
 
 
 def search(
