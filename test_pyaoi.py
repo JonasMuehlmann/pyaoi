@@ -109,10 +109,10 @@ class TestMismatch:
         assert pyaoi.mismatch([], []) is None
 
     def test_no_difference(self):
-        assert pyaoi.mismatch([1, 2, 3, 4, 5], [1, 2, 3, 4, 5]) == (5, 5)
+        assert pyaoi.mismatch([1, 2, 3, 4, 5], [1, 2, 3, 4, 5]) is None
 
     def test_no_difference_and_second_collection_longer(self):
-        assert pyaoi.mismatch([1, 2, 3, 4, 5], [1, 2, 3, 4, 5, 6, 7]) == (5, 5)
+        assert pyaoi.mismatch([1, 2, 3, 4, 5], [1, 2, 3, 4, 5, 6, 7]) is None
 
     def test_last_is_different(self):
         assert pyaoi.mismatch([1, 2, 3, 4, 5], [1, 2, 3, 4, 6]) == (5, 6)

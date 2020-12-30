@@ -178,7 +178,7 @@ def mismatch(
         sequence1: First sequence to use for comparison
         sequence2: Second sequence to use for comparison
         binary_predicate: A binary predicate, that returns true if the elements from both sequences are considered equal
-            If not provided, operator.eq will be used as a binary_predicate
+           Defaults to: operator.eq
 
     Returns:
         None, if one or more sequences is empty, or they do not differ until the end of the shortest sequence.
@@ -191,21 +191,17 @@ def mismatch(
 
         mismatch([1, 2, 3, 4, 5], [1, 2, 3, 4, 5]) returns None, since both sequences are considered equal
 
-        mismatch([1, 2, 3, 4, 5], [1, 2, 3, 4, 6]) returns (5, 6), since  their fifth index is considered not equal
+        mismatch([1, 2, 3, 4, 5], [1, 2, 3, 4, 6]) returns (5, 6), the values at the fifth index, since  their fifth index is considered not equal
 
-        mismatch([1, 2, 3, 4, 5], [1, 2, 3, 4, 6, 7, 8, 9]) returns (5, 6), since  their fifth index is considered not equal.
-        Since one sequence is longer, it's additional elements are not compared
+        mismatch([1, 2, 3, 4, 5], [1, 2, 3, 4, 6, 7, 8, 9]) returns (5, 6) for the same reason.
+            Since one sequence is longer, it's additional elements are not compared
     """
     if not sequence1 or not sequence2:
         return None
-    last_index_shortest_sequence: int = min(len(sequence1), len(sequence2)) - 1
 
     return next(
         (pair for pair in zip(sequence1, sequence2) if not binary_predicate(*pair)),
-        (
-            sequence1[last_index_shortest_sequence],
-            sequence2[last_index_shortest_sequence],
-        ),
+        None,
     )
 
 
