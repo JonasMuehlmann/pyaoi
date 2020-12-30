@@ -2,6 +2,19 @@
 
 <!--next-version-placeholder-->
 
+## v2.0.0 (2020-12-30)
+### Breaking
+* Function search_n() now returns -1 when being passed     an emtpy sequence or there are no num_elements repetitions of     parameter value  ([`2c1ea28`](https://github.com/JonasMuehlmann/pyaoi/commit/2c1ea28559512291eef1b8afb422082014f78c11))
+* Function search() now returns -1 when being passed at     least one empty sequence or sequence_sub does not occur once in     sequence_super  ([`1346efb`](https://github.com/JonasMuehlmann/pyaoi/commit/1346efb32c66eda2e4e33d6fe9ff24186c494d34))
+* Function adjacent_find() now returns -1 if no two     adjacent elements are considered equal  ([`5c5f2bf`](https://github.com/JonasMuehlmann/pyaoi/commit/5c5f2bfd24a06ab81283e85b1ca0af7305959f51))
+* Parameters values_in and values_from of function     find_first_of() have been renamed to iterable_super and interable_sub BREAKING CHANGE: Function find_first_of() now returns -1 if it is     being passed at least one empty iterable or iterable:_sub does not     occur once in iterable_super  ([`d62f734`](https://github.com/JonasMuehlmann/pyaoi/commit/d62f734fd30560d2e13ebcd1eb924fa52b5ccd2e))
+* Function find_end() now returns -1 if it is being     passed at least one empty collection or collection_sub does not     occur once in collection_super  ([`84454ba`](https://github.com/JonasMuehlmann/pyaoi/commit/84454baee9398a237baab1dcbff06380fb8217e8))
+* Functions find(), find_if() and find_if_not() now     return -1 when they are being passed empty iterables BREAKING CHANGE: Parameter collection of functions find_if() and find_if_not() has been renamed to iterable and it's type hind has been     changed accordingly  ([`154eef7`](https://github.com/JonasMuehlmann/pyaoi/commit/154eef73e155d81763d7d0b4181ec3c60fd405b3))
+* Function mismatch() now correctly returns None if     both sequences do not differ  ([`5938083`](https://github.com/JonasMuehlmann/pyaoi/commit/5938083fb85cecf52a2a6221da3d6973785f7d42))
+* Parameter iterable of function count_if_not() has     been renamed to collection, it's type hint/requirement has changed     accordingly ([`6af8983`](https://github.com/JonasMuehlmann/pyaoi/commit/6af89835e47a86c606fa6c0e5323424d04142428))
+* Function count_if_not() returns 0, instead of -1,     when being passed an empty collection  ([`6af8983`](https://github.com/JonasMuehlmann/pyaoi/commit/6af89835e47a86c606fa6c0e5323424d04142428))
+* Parameter readonly of functions for_each() and     for_each_n() has been removed, they are not allowed to modify     their passed in iterable  ([`ecfd728`](https://github.com/JonasMuehlmann/pyaoi/commit/ecfd728eb46e0a63314b0d450d9516675a12c87c))
+
 ## v1.0.0 (2020-12-28)
 ### Breaking
 * Parameter n of functions for_each_n() has been renamed to num_elements ([`c788046`](https://github.com/JonasMuehlmann/pyaoi/commit/c788046bfa057609c58d6e39d1e0ba8b11cc23bb))
