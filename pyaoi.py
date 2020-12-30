@@ -435,3 +435,19 @@ def copy_replace_if(
         A generator yielding the values of iterable with all values satisfying unary_predicate replaced with new_val
     """
     return (new_val if unary_predicate(val) else val for val in iterable)
+
+
+def copy_replace_if_not(
+    iterable: Iterable, unary_predicate: UnaryPredicate, new_val: Any
+) -> Iterable:
+    """Copy iterable while replacing all values not satisfying unary_predicate with new_val.
+
+    Args:
+        iterable: An iterable to copy
+        unary_predicate: An unary predicate deciding whether to replace an item
+        new_val: A value serving as the replacement
+
+    Returns:
+        A generator yielding the values of iterable with all values not satisfying unary_predicate replaced with new_val
+    """
+    return (new_val if not unary_predicate(val) else val for val in iterable)
