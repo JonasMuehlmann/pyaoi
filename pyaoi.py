@@ -54,40 +54,40 @@ UnaryFunction = Callable[[Any], None]
 
 
 def all_of(iterable: Iterable, unary_predicate: UnaryPredicate) -> bool:
-    """Check if an unary predicate returns True for all elements in the iterable, or if the iterable is empty.
+    """Check if an unary predicate returns True for all elements in the iterable.
 
     Args:
         iterable: An iterable to apply the unary_predicate to
         unary_predicate: An unary predicate to apply to each element in the iterable
 
     Returns:
-        True if the predicate evaluates to True for every element in the iterable, or the iterable is empty, False otherwise
+        True if the predicate evaluates to True for every element in the iterable, False otherwise or if the iterable is empty
     """
-    return all(map(unary_predicate, iterable))
+    return False if not iterable else all(map(unary_predicate, iterable))
 
 
 def any_of(iterable: Iterable, unary_predicate: UnaryPredicate) -> bool:
-    """Check if an unary predicate returns True for any elements in the iterable, or if the iterable is empty.
+    """Check if an unary predicate returns True for any elements in the iterable.
 
     Args:
         iterable: An iterable to apply the unary_predicate to
         unary_predicate: An unary predicate to apply to each element in the iterable
 
     Returns:
-        True if the predicate evaluates to True for any element in the iterable, False otherwise or when the iterable is empty
+        True if the predicate evaluates to True for any element in the iterable, False otherwise or if the iterable is empty
     """
-    return any(map(unary_predicate, iterable))
+    return False if not iterable else any(map(unary_predicate, iterable))
 
 
 def none_of(iterable: Iterable, unary_predicate: UnaryPredicate) -> bool:
-    """Check if an unary predicate returns False for any elements in the iterable, or if the iterable is empty.
+    """Check if an unary predicate returns True for no elements in the iterable.
 
     Args:
         iterable: An iterable to apply the unary_predicate to
         unary_predicate: An unary predicate to apply to each element in the iterable
 
     Returns:
-        True if the predicate evaluates to False for every element in the iterable, False otherwise or when the iterable is empty
+        True if the predicate evaluates to True for no element in the iterable or if the iterable is empty, False otherwise
     """
     return True if not iterable else not all(map(unary_predicate, iterable))
 

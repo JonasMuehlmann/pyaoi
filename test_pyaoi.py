@@ -8,7 +8,7 @@ import pyaoi
 
 class TestAllOf:
     def test_empty(self):
-        assert pyaoi.all_of([], None)
+        assert not pyaoi.all_of([], None)
 
     def test_true_condition(self):
         assert pyaoi.all_of([1, 2, 3, 4, 5], lambda x: x > 0)
