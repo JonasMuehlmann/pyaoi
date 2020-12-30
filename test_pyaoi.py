@@ -267,3 +267,24 @@ class TestCopyReplace:
 
     def test_last_change(self):
         assert list(pyaoi.copy_replace([1, 2, 3, 4], 4, 6)) == [1, 2, 3, 6]
+
+
+class TestCopyReplaceIf:
+    def test_empty(self):
+        assert list(pyaoi.copy_replace_if([], lambda x: x == 0, 2)) == []
+
+    def test_no_change(self):
+        assert list(pyaoi.copy_replace_if([1, 2, 3, 4], lambda x: x == 0, 6)) == [
+            1,
+            2,
+            3,
+            4,
+        ]
+
+    def test_last_change(self):
+        assert list(pyaoi.copy_replace_if([1, 2, 3, 4], lambda x: x == 4, 6)) == [
+            1,
+            2,
+            3,
+            6,
+        ]
