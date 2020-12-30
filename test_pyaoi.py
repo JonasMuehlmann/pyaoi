@@ -120,7 +120,7 @@ class TestMismatch:
 
 class TestFind:
     def test_not_present(self):
-        assert pyaoi.find([1, 2, 3, 4, 5], 6) == 4
+        assert pyaoi.find([1, 2, 3, 4, 5], 6) == -1
 
     def test_first_element(self):
         assert pyaoi.find([1, 2, 3, 4, 5], 1) == 0
@@ -137,7 +137,7 @@ class TestFind:
 
 class TestFindIf:
     def test_not_present(self):
-        assert pyaoi.find_if([1, 2, 3, 4, 5], lambda x: x > 6) == 4
+        assert pyaoi.find_if([1, 2, 3, 4, 5], lambda x: x > 6) == -1
 
     def test_first_element(self):
         assert pyaoi.find_if([1, 2, 3, 4, 5], lambda x: x == 1) == 0

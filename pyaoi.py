@@ -31,7 +31,6 @@
 #
 
 
-import itertools
 import operator
 from typing import (
     Callable,
@@ -205,54 +204,64 @@ def mismatch(
     )
 
 
-def find(collection: Collection, target_element: Any) -> int:
-    """Find the index of the first occurrence of target_element in collection.
+def find(sequence: Sequence, target_element: Any) -> int:
+    """Find the index of the first occurrence of target_element in sequence.
 
     Args:
-        collection: A collection which to search through
-        target_element: An element to search in the collection
+        sequence: A sequence which to search through
+        target_element: An element to search in the sequence
 
     Returns:
-        The index of target_element's first occurrence, -1 if it was not found
+        The index of target_element's first occurrence, -1 if it was not found or the sequence is empty
     """
+    if not sequence:
+        return -1
+
     try:
-        return list(
-            map(operator.eq, collection, itertools.repeat(target_element))
-        ).index(True)
+        return sequence.index(target_element)
+
     except ValueError:
-        return len(collection) - 1
+        return -1
 
 
-def find_if(collection: Collection, unary_predicate: UnaryPredicate) -> int:
-    """Find the index of the first element in collection satisfying unary_predicate.
+def find_if(iterable: Iterable, unary_predicate: UnaryPredicate) -> int:
+    """Find the index of the first element in iterable satisfying unary_predicate.
 
     Args:
-        collection: A collection which to search through
+        iterable: A iterable which to search through
         unary_predicate: An UnaryPredicate, which determines if the current value is our target
 
     Returns:
-        The index of the first element which satisfies unary_predicate, -1 if no element satisfies unary_predicate
+        The index of the first element which satisfies unary_predicate, -1 if no element satisfies unary_predicate or the iterable is empty
     """
+    if not iterable:
+        return -1
+
     try:
-        return list(map(unary_predicate, collection)).index(True)
+        return list(map(unary_predicate, iterable)).index(True)
+
     except ValueError:
-        return len(collection) - 1
+        return -1
 
 
-def find_if_not(collection: Collection, unary_predicate: UnaryPredicate) -> int:
-    """Find the index of the first element in collection NOT satisfying unary_predicate.
+def find_if_not(iterable: Iterable, unary_predicate: UnaryPredicate) -> int:
+    """Find the index of the first element in iterable NOT satisfying unary_predicate.
 
     Args:
-        collection: A collection which to search through
+        iterable: A iterable which to search through
         unary_predicate: An UnaryPredicate, which determines if the current value is NOT our target
 
     Returns:
-        The index of the first element which DOES NOT satisfy unary_predicate, -1 if all elements satisfy unary_predicate
+        The index of the first element which DOES NOT satisfy unary_predicate, -1 if all elements satisfy unary_predicate or the iterable is empty
     """
+    if not iterable:
+        return -1
+
     try:
-        return list(map(unary_predicate, collection)).index(False)
+        return list(map(unary_predicate, iterable)).index(False)
+
     except ValueError:
-        return len(collection) - 1
+        return -1
 
 
 def find_end(
