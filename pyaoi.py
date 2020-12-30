@@ -131,7 +131,7 @@ def count(sequence: Sequence, target: Any) -> int:
 
     Args:
         sequence: An iterable in which occurrences of target are counted
-        target: A value/object, which's occurrences will be counted
+        target: A value/object, which occurrences will be counted
 
     Returns:
         How often target appeared in sequence
@@ -152,21 +152,17 @@ def count_if(iterable: Iterable, unary_predicate: UnaryPredicate) -> int:
     return sum(map(unary_predicate, iterable))
 
 
-def count_if_not(iterable: Iterable, unary_predicate: UnaryPredicate) -> int:
-    """Count for how many elements in a iterable an unary predicate returns False.
+def count_if_not(collection: Collection, unary_predicate: UnaryPredicate) -> int:
+    """Count for how many elements in a collection an unary predicate returns False.
 
     Args:
-        iterable: An iterable for which to count for how many elements unary_predicate returns False
-        unary_predicate: A value/object, for which to count for how many items in the iterable it returns False
+        collection: An collection for which to count for how many elements unary_predicate returns False
+        unary_predicate: A value/object, for which to count for how many items in the collection it returns False
 
     Returns:
-        For how many items unary predicate returned False, -1 if the iterable is empty
+        For how many items unary predicate returned False
     """
-    return (
-        -1
-        if not iterable
-        else sum(map(lambda element: not unary_predicate(element), iterable))
-    )
+    return len(collection) - sum(map(unary_predicate, collection))
 
 
 def mismatch(

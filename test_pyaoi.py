@@ -90,6 +90,17 @@ class TestCountIf:
         assert pyaoi.count_if([1, 1, 2, 3, 4, 5], lambda x: x == 1) == 2
 
 
+class TestCountIfNot:
+    def test_empty_collection(self):
+        assert pyaoi.count_if_not([], lambda x: x == 1) == 0
+
+    def test_0_occurrences(self):
+        assert pyaoi.count_if_not([1, 2, 3, 4, 5], lambda x: x > 0) == 0
+
+    def test_2_occurrences(self):
+        assert pyaoi.count_if_not([1, 1, 2, 3, 4, 5], lambda x: x > 1) == 2
+
+
 class TestMismatch:
     def test_one_collection_empty(self):
         assert pyaoi.mismatch([1, 2, 3, 4, 5], []) is None
