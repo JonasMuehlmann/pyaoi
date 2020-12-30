@@ -405,3 +405,17 @@ def search_n(
             return i
 
     return -1
+
+
+def copy_replace(iterable: Iterable, old_val: Any, new_val: Any) -> Iterable:
+    """Copy iterable while replacing all occurrences of old_val with new_val.
+
+    Args:
+        iterable: An iterable to copy
+        old_val: A value to replace
+        new_val: A value serving as the replacement
+
+    Returns:
+        A generator yielding the values of iterable with all occurrences of old_val replaced with new_val
+    """
+    return (val if val != old_val else new_val for val in iterable)
