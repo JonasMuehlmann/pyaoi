@@ -388,12 +388,11 @@ def search_n(
         sequence: A sequence to search in
         value: any object to search for in collection
         num_elements: How many times, counting from the beginning, value has to be repeated
-        binary_predicate: A binary predicate to evaluate the equality of consecutive items
+        binary_predicate: A binary predicate to evaluate the equality of consecutive items, defaults to: operator.eq
 
     Returns:
-        The index of the beginning of the first num_elements repetitions of value in sequence
-            If not found, returns the last index of sequence_super
-            If sequence is empty, returns -1
+        The index of the beginning of the first num_elements repetitions of value in sequence,
+            or -1 if sequence is empty or value does not occur once in sequence
     """
     if not sequence:
         return -1
@@ -405,4 +404,4 @@ def search_n(
         else:
             return i
 
-    return len(sequence) - 1
+    return -1
