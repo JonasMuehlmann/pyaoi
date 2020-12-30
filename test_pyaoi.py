@@ -183,7 +183,13 @@ class TestFindFirstOf:
         assert pyaoi.find_first_of([-1, -2, 1, 2, 3, 4, 5, 6], [1, 2, 3]) == 2
 
     def test_not_present(self):
-        assert pyaoi.find_first_of(list(range(4)), list(range(5, 10))) == 3
+        assert pyaoi.find_first_of(list(range(4)), list(range(5, 10))) == -1
+
+    def test_super_empty(self):
+        assert pyaoi.find_first_of([], list(range(5, 10))) == -1
+
+    def test_sub_empty(self):
+        assert pyaoi.find_first_of(list(range(4)), []) == -1
 
 
 class TestAdjacentFind:

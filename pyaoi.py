@@ -296,28 +296,30 @@ def find_end(
 
 
 def find_first_of(
-    values_in: Collection,
-    values_from: Collection,
+    iterable_super: Iterable,
+    iterable_sub: Iterable,
     binary_predicate: BinaryPredicate = operator.eq,
 ) -> int:
-    """Find first index in values_in at which an element of values_from occurs.
+    """Find first index in values_in at which an element of iterable_sub occurs.
 
     Args:
-        values_in: A Collection in which to search for values of values_from
-        values_from: A Collection of values to search for in values_in
-        binary_predicate: A BinaryPredicate used to check if an index's elements of both collections are considered equal
+        iterable_super: A Iterable in which to search for values of iterable_sub
+        iterable_sub: A Iterable of values to search for in values_in
+        binary_predicate: A BinaryPredicate used to check if an index's elements of both Iterables are considered equal
 
     Returns:
-        The first index in values_in at which an element of values_from occurs
-            or the last index in  values_in if it is empty or no element from values_from is found in it
-
+        The first index in values_in at which an element of iterable_sub occurs,
+            or -1 if any of the two iterables is empty or iterable_sub does not occur once in iterable_super
     """
-    for i, element_in in enumerate(values_in):  # noqa: VNE001
-        for element_from in values_from:
-            if binary_predicate(element_in, element_from):
+    if not iterable_super or not iterable_sub:
+        return -1
+
+    for i, element_super in enumerate(iterable_super):  # noqa: VNE001
+        for element_sub in iterable_sub:
+            if binary_predicate(element_super, element_sub):
                 return i
 
-    return len(values_in) - 1
+    return -1
 
 
 def adjacent_find(
