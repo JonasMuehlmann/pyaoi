@@ -217,7 +217,7 @@ class TestSearch:
         assert pyaoi.search([1, 2, 3, 4, 5], [3, 4, 5]) == 2
 
     def test_not_present(self):
-        assert pyaoi.search([1, 2, 3, 4, 5], [7, 8]) == 4
+        assert pyaoi.search([1, 2, 3, 4, 5], [7, 8]) == -1
 
     def test_super_empty(self):
         assert pyaoi.search([], [7, 8]) == -1

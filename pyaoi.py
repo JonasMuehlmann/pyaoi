@@ -357,14 +357,13 @@ def search(
     Args:
         sequence_super: A sequence to search in
         sequence_sub: A sequence to search for in sequence_super
-        binary_predicate: A binary predicate to evaluate the equality of compared items
+        binary_predicate: A binary predicate to evaluate the equality of compared items, defaults to: operator.eq
 
     Returns:
-        The index of the beginning of the first occurrence of sequence_sub in sequence_super
-            If not found, returns the last index of sequence_super
-            If any sequence is empty, returns -1
+        The index of the beginning of the first occurrence of sequence_sub in sequence_super,
+            or -1 if any sequence_super or sequence_sub is empty or sequence_sub does not occur once in sequence_super
     """
-    if not sequence_sub:
+    if not sequence_super or not sequence_sub:
         return -1
 
     for i in range(len((sequence_super))):  # noqa: VNE001
@@ -374,7 +373,7 @@ def search(
 
             return i
 
-    return len(sequence_super) - 1
+    return -1
 
 
 def search_n(
