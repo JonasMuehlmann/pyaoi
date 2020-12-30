@@ -278,9 +278,12 @@ def find_end(
 
     Returns:
         The index of the beginning of the last occurrence of collection_sub in collection_super,
-            or the last index in collection_super if it is empty or collection_sub is not found in it
+            -1 if any of the two collections is empty, or collection_sub does not occur once in collection_super
 
     """
+    if not collection_super or not collection_sub:
+        return -1
+
     for i in range(  # noqa: VNE001
         (len(collection_super) - 1) - (len(collection_sub) - 1), -1, -1
     ):
@@ -289,7 +292,7 @@ def find_end(
         ):
             return i
 
-    return len(collection_super) - 1
+    return -1
 
 
 def find_first_of(

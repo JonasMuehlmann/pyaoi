@@ -163,7 +163,13 @@ class TestFindEnd:
         assert pyaoi.find_end([1, 1, 1, 2, 3], [1, 2, 3]) == 2
 
     def test_not_present(self):
-        assert pyaoi.find_end([1, 2, 3], [1, 2, 3, 4]) == 2
+        assert pyaoi.find_end([1, 2, 3], [1, 2, 3, 4]) == -1
+
+    def test_super_empty(self):
+        assert pyaoi.find_end([], [1, 2, 3, 4]) == -1
+
+    def test_both_empty(self):
+        assert pyaoi.find_end([], []) == -1
 
 
 class TestFindFirstOf:
