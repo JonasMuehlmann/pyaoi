@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v2.1.0 (2020-12-30)
+### Feature
+* Implement copy_replace_if_not() ([`f16d338`](https://github.com/JonasMuehlmann/pyaoi/commit/f16d338e419ebeb52b149dd2cd72e425ac41727a))
+* Implement copy_replace_if() ([`252c8b5`](https://github.com/JonasMuehlmann/pyaoi/commit/252c8b5db1aa83c5c343576b534018469fb457e2))
+* Implement copy_replace() ([`eeab885`](https://github.com/JonasMuehlmann/pyaoi/commit/eeab885ed7f469c292e007d470abae4b4ae3bafa))
+
 ## v2.0.0 (2020-12-30)
 ### Breaking
 * Function search_n() now returns -1 when being passed     an emtpy sequence or there are no num_elements repetitions of     parameter value  ([`2c1ea28`](https://github.com/JonasMuehlmann/pyaoi/commit/2c1ea28559512291eef1b8afb422082014f78c11))
