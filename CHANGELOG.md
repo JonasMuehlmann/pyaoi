@@ -2,6 +2,11 @@
 
 <!--next-version-placeholder-->
 
+## v2.3.0 (2020-12-31)
+### Feature
+* Implement fill_n() ([`606a1b1`](https://github.com/JonasMuehlmann/pyaoi/commit/606a1b13ad3bb4fce0509ec128bc4057937898e8))
+* Implement fill() ([`9fb3d16`](https://github.com/JonasMuehlmann/pyaoi/commit/9fb3d16c0669fe18de301c2a5a54213fcbc41dd2))
+
 ## v2.2.0 (2020-12-31)
 ### Feature
 * Implement copy_except_if_not() ([`83678ff`](https://github.com/JonasMuehlmann/pyaoi/commit/83678ff784990693c5e0137624d3b7da36209aaf))
