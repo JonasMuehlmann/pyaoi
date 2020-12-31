@@ -46,9 +46,6 @@ function's implementation. This list is subject to change at any time.
 
 - [x] search
 - [x] search_n
-
-- [ ] copy_if
-- [ ] copy_if_not
   
 - [x] copy_replace
 - [x] copy_replace_if
