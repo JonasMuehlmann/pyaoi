@@ -451,3 +451,16 @@ def copy_replace_if_not(
         A generator yielding the values of iterable with all values not satisfying unary_predicate replaced with new_val
     """
     return (new_val if not unary_predicate(val) else val for val in iterable)
+
+
+def copy_except(iterable: Iterable, exclude: Any) -> Iterable:
+    """Copy iterable while excluding all occurrences of exclude.
+
+    Args:
+        iterable: An iterable to copy
+        exclude: A value to exclude
+
+    Returns:
+        A generator yielding the values of iterable except exclude
+    """
+    return (val for val in iterable if val != exclude)

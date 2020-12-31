@@ -49,11 +49,11 @@ function's implementation. This list is subject to change at any time.
 
 ### Modifying sequence operations
 
-- [ ] copy_replace
-- [ ] copy_replace_if
-- [ ] copy_replace_if_not
+- [x] copy_replace
+- [x] copy_replace_if
+- [x] copy_replace_if_not
   
-- [ ] copy_except
+- [x] copy_except
 - [ ] copy_except_if
 - [ ] copy_except_if_not
 

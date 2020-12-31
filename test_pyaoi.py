@@ -309,3 +309,14 @@ class TestCopyReplaceIfNot:
             3,
             6,
         ]
+
+
+class TestCopyExcept:
+    def test_empty(self):
+        assert list(pyaoi.copy_except([], 2)) == []
+
+    def test_no_change(self):
+        assert list(pyaoi.copy_except([1, 2, 3, 4], 5)) == [1, 2, 3, 4]
+
+    def test_last_excluded(self):
+        assert list(pyaoi.copy_except([1, 2, 3, 4], 4)) == [1, 2, 3]
