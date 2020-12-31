@@ -464,3 +464,16 @@ def copy_except(iterable: Iterable, exclude: Any) -> Iterable:
         A generator yielding the values of iterable except exclude
     """
     return (val for val in iterable if val != exclude)
+
+
+def copy_except_if(iterable: Iterable, unary_predicate: UnaryPredicate) -> Iterable:
+    """Copy iterable while excluding all values satisfying unary_predicate.
+
+    Args:
+        iterable: An iterable to copy
+        unary_predicate: An unary predicate deciding whether to exclude a value
+
+    Returns:
+        A generator yielding the values of iterable except the ones satisfying unary_predicate
+    """
+    return (val for val in iterable if not unary_predicate(val))
