@@ -500,3 +500,19 @@ def fill(mutable_sequence: MutableSequence, val: Any) -> None:  # noqa: VNE002
         val: A value to set all indices of sequence to
     """
     mutable_sequence[:] = itertools.repeat(val, len(mutable_sequence))
+
+
+def fill_n(
+    mutable_sequence: MutableSequence, val: Any, num_elements: int  # noqa: VNE002
+) -> None:
+    """Set the first num_elements indices of mutable_sequence to val.
+
+    Args:
+        mutable_sequence: A sequence to fill
+        val: A value to set indices of sequence to
+        num_elements: A value indicating how many indices(counted from the beginning) to set to val
+    """
+    mutable_sequence[:num_elements] = itertools.repeat(
+        val,
+        num_elements if num_elements < len(mutable_sequence) else len(mutable_sequence),
+    )

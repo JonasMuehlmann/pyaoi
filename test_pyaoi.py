@@ -359,7 +359,7 @@ class TestCopyExceptIfNot:
 
 
 class TestFill:
-    def test(self):
+    def test_all(self):
         sequence = [1, 2, 3, 4]
         pyaoi.fill(sequence, 5)
         assert sequence == [5, 5, 5, 5]
@@ -367,4 +367,16 @@ class TestFill:
     def test_empty(self):
         sequence = []
         pyaoi.fill(sequence, 5)
+        assert sequence == []
+
+
+class TestFillN:
+    def test_first_2(self):
+        sequence = [1, 2, 3, 4]
+        pyaoi.fill_n(sequence, 5, 2)
+        assert sequence == [5, 5, 3, 4]
+
+    def test_empty(self):
+        sequence = []
+        pyaoi.fill_n(sequence, 5, 2)
         assert sequence == []
