@@ -32,6 +32,7 @@
 import itertools
 import operator
 from collections import deque
+from itertools import chain
 from typing import (
     Callable,
     Any,
@@ -40,7 +41,6 @@ from typing import (
     Iterable,
     Collection,
     Sequence,
-    MutableSequence,
 )
 
 UnaryPredicate = Callable[[Any], bool]
@@ -513,29 +513,20 @@ def fill_n(sequence: Sequence, val: Any, num_elements: int) -> chain:  # noqa: V
     )
 
 
-def transform(mutable_sequence: MutableSequence, unary_function: UnaryFunction) -> None:
-    """Change every element in mutable_sequence by passing it to unary_function and replacing it by the return value.
+def map_n(
+    sequence: Sequence, unary_function: UnaryFunction, num_elements: int
+) -> chain:
+    """Change the first num_elements elements in sequence by passing them to unary_function and replacing them by the return values.
 
     Args:
-        mutable_sequence: A sequence to modify
-        unary_function: A function returning new values for each element
-    """
-    mutable_sequence[:] = map(unary_function, mutable_sequence)
-
-
-def transform_n(
-    mutable_sequence: MutableSequence, unary_function: UnaryFunction, num_elements: int
-) -> None:
-    """Change the first num_elements elements in mutable_sequence by passing them to unary_function and replacing them by the return values.
-
-    Args:
-        mutable_sequence: A sequence to modify
+        sequence: A sequence to modify
         unary_function: A function returning new values for each element
         num_elements: A value indicating the number of elements(counted from the beginning) to transform
+
+    Returns:
+        An iterable with the first num_elements elements changed by unary_function
     """
-    mutable_sequence[:num_elements] = map(
-        unary_function, mutable_sequence[:num_elements]
-    )
+    return chain(map(unary_function, sequence[:num_elements]), sequence[num_elements:])
 
 
 def rotate(iterable: Iterable, num_positions: int) -> deque:
@@ -543,7 +534,7 @@ def rotate(iterable: Iterable, num_positions: int) -> deque:
 
     Args:
         iterable: A iterable to copy and rotate
-        num_positions: The number of steps to rotate mutable_iterable to the right,
+        num_positions: The number of steps to rotate iterable to the right,
             negative values rotate to the left
     """
     temp_deque = deque(iterable)
