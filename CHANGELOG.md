@@ -2,6 +2,11 @@
 
 <!--next-version-placeholder-->
 
+## v2.4.0 (2020-12-31)
+### Feature
+* Implement transform_n() ([`168a99a`](https://github.com/JonasMuehlmann/pyaoi/commit/168a99a10291357be815c34ed37146f9733949f9))
+* Implement transform() ([`45ba99b`](https://github.com/JonasMuehlmann/pyaoi/commit/45ba99b945926eee6491d3f07becced5d06c2ebe))
+
 ## v2.3.0 (2020-12-31)
 ### Feature
 * Implement fill_n() ([`606a1b1`](https://github.com/JonasMuehlmann/pyaoi/commit/606a1b13ad3bb4fce0509ec128bc4057937898e8))
