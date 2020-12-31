@@ -58,11 +58,12 @@ function's implementation. This list is subject to change at any time.
 - [x] copy_except_if_not
 
 
-- [ ] fill
-- [ ] fill_n
+- [x] fill
+- [x] fill_n
 
 
-- [ ] transform
+- [x] transform
+- [ ] transform_n
 
 
 - [ ] remove

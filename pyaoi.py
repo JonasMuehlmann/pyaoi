@@ -516,3 +516,13 @@ def fill_n(
         val,
         num_elements if num_elements < len(mutable_sequence) else len(mutable_sequence),
     )
+
+
+def transform(mutable_sequence: MutableSequence, unary_function: UnaryFunction) -> None:
+    """Change every element in mutable_sequence by passing it to unary_function and replacing it by the return value.
+
+    Args:
+        mutable_sequence: A sequence to modify
+        unary_function: A function returning new values for each element
+    """
+    mutable_sequence[:] = map(unary_function, mutable_sequence)

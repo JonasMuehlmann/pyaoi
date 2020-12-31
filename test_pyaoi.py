@@ -380,3 +380,17 @@ class TestFillN:
         sequence = []
         pyaoi.fill_n(sequence, 5, 2)
         assert sequence == []
+
+
+class TestTransform:
+    def test_empty(self):
+        mutable_sequence = []
+
+        pyaoi.transform(mutable_sequence, lambda x: x + 1)
+        assert mutable_sequence == []
+
+    def test_change_all(self):
+        mutable_sequence = [1, 2, 3, 4]
+
+        pyaoi.transform(mutable_sequence, lambda x: x + 1)
+        assert mutable_sequence == [2, 3, 4, 5]
