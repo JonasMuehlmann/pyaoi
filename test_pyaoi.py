@@ -336,3 +336,23 @@ class TestCopyExceptIf:
 
     def test_last_excluded(self):
         assert list(pyaoi.copy_except_if([1, 2, 3, 4], lambda x: x == 4)) == [1, 2, 3]
+
+
+class TestCopyExceptIfNot:
+    def test_empty(self):
+        assert list(pyaoi.copy_except_if_not([], lambda x: x == 0)) == []
+
+    def test_no_change(self):
+        assert list(pyaoi.copy_except_if_not([1, 2, 3, 4], lambda x: x < 5)) == [
+            1,
+            2,
+            3,
+            4,
+        ]
+
+    def test_last_excluded(self):
+        assert list(pyaoi.copy_except_if_not([1, 2, 3, 4], lambda x: x < 4)) == [
+            1,
+            2,
+            3,
+        ]

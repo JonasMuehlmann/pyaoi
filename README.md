@@ -55,7 +55,7 @@ function's implementation. This list is subject to change at any time.
   
 - [x] copy_except
 - [x] copy_except_if
-- [ ] copy_except_if_not
+- [x] copy_except_if_not
 
 
 - [ ] fill
