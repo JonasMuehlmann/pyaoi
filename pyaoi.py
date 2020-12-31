@@ -31,6 +31,7 @@
 #
 import itertools
 import operator
+from collections import deque
 from typing import (
     Callable,
     Any,
@@ -541,3 +542,16 @@ def transform_n(
     mutable_sequence[:num_elements] = map(
         unary_function, mutable_sequence[:num_elements]
     )
+
+
+def rotate(iterable: Iterable, num_positions: int) -> deque:
+    """Return a deque from iterable rotated num_positions to the right.
+
+    Args:
+        iterable: A iterable to copy and rotate
+        num_positions: The number of steps to rotate mutable_iterable to the right,
+            negative values rotate to the left
+    """
+    temp_deque = deque(iterable)
+    temp_deque.rotate(num_positions)
+    return temp_deque

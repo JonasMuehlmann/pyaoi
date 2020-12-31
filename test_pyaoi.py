@@ -408,3 +408,14 @@ class TestTransformN:
 
         pyaoi.transform_n(mutable_sequence, lambda x: x + 1, 2)
         assert mutable_sequence == [2, 3, 3, 4]
+
+
+class TestRotate:
+    def test_empty(self):
+        assert list(pyaoi.rotate([], 1)) == []
+
+    def test_one_step(self):
+        assert list(pyaoi.rotate([1, 2, 3, 4], 1)) == [4, 1, 2, 3]
+
+    def test_one_step_left(self):
+        assert list(pyaoi.rotate([1, 2, 3, 4], -1)) == [2, 3, 4, 1]
