@@ -493,29 +493,23 @@ def copy_except_if_not(iterable: Iterable, unary_predicate: UnaryPredicate) -> I
     return (val for val in iterable if unary_predicate(val))
 
 
-def fill(mutable_sequence: MutableSequence, val: Any) -> None:  # noqa: VNE002
-    """Set all indices of mutable_sequence to val.
+def fill_n(sequence: Sequence, val: Any, num_elements: int) -> chain:  # noqa: VNE002
+    """Set the first num_elements indices of sequence to val.
 
     Args:
-        mutable_sequence: A sequence to fill
-        val: A value to set all indices of sequence to
-    """
-    mutable_sequence[:] = itertools.repeat(val, len(mutable_sequence))
-
-
-def fill_n(
-    mutable_sequence: MutableSequence, val: Any, num_elements: int  # noqa: VNE002
-) -> None:
-    """Set the first num_elements indices of mutable_sequence to val.
-
-    Args:
-        mutable_sequence: A sequence to fill
+        sequence: A sequence to fill
         val: A value to set indices of sequence to
         num_elements: A value indicating how many indices(counted from the beginning) to set to val
+
+    Returns:
+        An iterable with the first num_elements elements changed to val
     """
-    mutable_sequence[:num_elements] = itertools.repeat(
-        val,
-        num_elements if num_elements < len(mutable_sequence) else len(mutable_sequence),
+    return itertools.chain(
+        itertools.repeat(
+            val,
+            num_elements if num_elements < len(sequence) else len(sequence),
+        ),
+        sequence[num_elements:],
     )
 
 
