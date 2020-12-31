@@ -394,3 +394,17 @@ class TestTransform:
 
         pyaoi.transform(mutable_sequence, lambda x: x + 1)
         assert mutable_sequence == [2, 3, 4, 5]
+
+
+class TestTransformN:
+    def test_empty(self):
+        mutable_sequence = []
+
+        pyaoi.transform_n(mutable_sequence, lambda x: x + 1, 5)
+        assert mutable_sequence == []
+
+    def test_change_all(self):
+        mutable_sequence = [1, 2, 3, 4]
+
+        pyaoi.transform_n(mutable_sequence, lambda x: x + 1, 2)
+        assert mutable_sequence == [2, 3, 3, 4]

@@ -526,3 +526,18 @@ def transform(mutable_sequence: MutableSequence, unary_function: UnaryFunction) 
         unary_function: A function returning new values for each element
     """
     mutable_sequence[:] = map(unary_function, mutable_sequence)
+
+
+def transform_n(
+    mutable_sequence: MutableSequence, unary_function: UnaryFunction, num_elements: int
+) -> None:
+    """Change the first num_elements elements in mutable_sequence by passing them to unary_function and replacing them by the return values.
+
+    Args:
+        mutable_sequence: A sequence to modify
+        unary_function: A function returning new values for each element
+        num_elements: A value indicating the number of elements(counted from the beginning) to transform
+    """
+    mutable_sequence[:num_elements] = map(
+        unary_function, mutable_sequence[:num_elements]
+    )
