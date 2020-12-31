@@ -356,3 +356,15 @@ class TestCopyExceptIfNot:
             2,
             3,
         ]
+
+
+class TestFill:
+    def test(self):
+        sequence = [1, 2, 3, 4]
+        pyaoi.fill(sequence, 5)
+        assert sequence == [5, 5, 5, 5]
+
+    def test_empty(self):
+        sequence = []
+        pyaoi.fill(sequence, 5)
+        assert sequence == []

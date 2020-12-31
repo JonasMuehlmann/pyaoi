@@ -29,8 +29,7 @@
 #      You should have received a copy of the GNU General Public License
 #      along with pyaoi.  If not, see <https://www.gnu.org/licenses/>.
 #
-
-
+import itertools
 import operator
 from typing import (
     Callable,
@@ -40,6 +39,7 @@ from typing import (
     Iterable,
     Collection,
     Sequence,
+    MutableSequence,
 )
 
 UnaryPredicate = Callable[[Any], bool]
@@ -490,3 +490,13 @@ def copy_except_if_not(iterable: Iterable, unary_predicate: UnaryPredicate) -> I
         A generator yielding the values of iterable except the ones not satisfying unary_predicate
     """
     return (val for val in iterable if unary_predicate(val))
+
+
+def fill(mutable_sequence: MutableSequence, val: Any) -> None:  # noqa: VNE002
+    """Set all indices of mutable_sequence to val.
+
+    Args:
+        mutable_sequence: A sequence to fill
+        val: A value to set all indices of sequence to
+    """
+    mutable_sequence[:] = itertools.repeat(val, len(mutable_sequence))
