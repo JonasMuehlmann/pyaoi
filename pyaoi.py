@@ -237,11 +237,11 @@ def find_if(iterable: Iterable, unary_predicate: UnaryPredicate) -> int:
     if not iterable:
         return -1
 
-    try:
-        return list(map(unary_predicate, iterable)).index(True)
+    for i, val in enumerate(iterable):  # noqa: VNE002
+        if unary_predicate(val):
+            return i
 
-    except ValueError:
-        return -1
+    return -1
 
 
 def find_if_not(iterable: Iterable, unary_predicate: UnaryPredicate) -> int:
@@ -257,11 +257,11 @@ def find_if_not(iterable: Iterable, unary_predicate: UnaryPredicate) -> int:
     if not iterable:
         return -1
 
-    try:
-        return list(map(unary_predicate, iterable)).index(False)
+    for i, val in enumerate(iterable):  # noqa: VNE002
+        if not unary_predicate(val):
+            return i
 
-    except ValueError:
-        return -1
+    return -1
 
 
 def find_end(
