@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v2.2.0 (2020-12-31)
+### Feature
+* Implement copy_except_if_not() ([`83678ff`](https://github.com/JonasMuehlmann/pyaoi/commit/83678ff784990693c5e0137624d3b7da36209aaf))
+* Implement copy_except_if() ([`f7dd1eb`](https://github.com/JonasMuehlmann/pyaoi/commit/f7dd1eb0e710902ad7b5f7c6a07f3c4c55f1d16b))
+* Implement copy_except() ([`a5e2102`](https://github.com/JonasMuehlmann/pyaoi/commit/a5e2102e2d83d60eb4fb4d4a2f3f5dcb78a51ef3))
+
 ## v2.1.0 (2020-12-30)
 ### Feature
 * Implement copy_replace_if_not() ([`f16d338`](https://github.com/JonasMuehlmann/pyaoi/commit/f16d338e419ebeb52b149dd2cd72e425ac41727a))
