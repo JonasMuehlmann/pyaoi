@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """A collection of functions operating on iterables."""
 #  This file is part of pyaoi.
-#  Copyright (C) 2020 Jonas Muehlmann
+#  Copyright (C) 2020-2021 Jonas Muehlmann
 #
 #      pyaoi is free software: you can redistribute it and/or modify
 #      it under the terms of the GNU General Public License as published by
