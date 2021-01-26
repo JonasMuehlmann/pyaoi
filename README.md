@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/pyaoi/community](https://badges.gitter.im/pyaoi/community.svg)](https://gitter.im/pyaoi/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.com/JonasMuehlmann/pyaoi.svg?branch=master)](https://travis-ci.com/JonasMuehlmann/pyaoi) ![img](https://img.shields.io/badge/semver-2.0.0-green) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-This project provides a bunch of functions to interact with iterables, it is inspired by
+This project provides convenient functions to process iterables, it is inspired by
 the [algorithm header](https://en.cppreference.com/w/cpp/algorithm) from the C++ standard template library (STL for
 short).
 
