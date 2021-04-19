@@ -1,34 +1,27 @@
 #!/usr/bin/env python3
 """A collection of functions operating on iterables."""
-#  This file is part of pyaoi.
-#  Copyright (C) 2020-2021 Jonas Muehlmann
-#
-#      pyaoi is free software: you can redistribute it and/or modify
-#      it under the terms of the GNU General Public License as published by
-#      the Free Software Foundation, either version 3 of the License, or
-#      (at your option) any later version.
-#
-#      pyaoi is distributed in the hope that it will be useful,
-#      but WITHOUT ANY WARRANTY; without even the implied warranty of
-#      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#      GNU General Public License for more details.
-#
-#      You should have received a copy of the GNU General Public License
-#      along with pyaoi.  If not, see <https://www.gnu.org/licenses/>.
-#
-#      pyaoi is free software: you can redistribute it and/or modify
-#      it under the terms of the GNU General Public License as published by
-#      the Free Software Foundation, either version 3 of the License, or
-#      (at your option) any later version.
-#
-#      pyaoi is distributed in the hope that it will be useful,
-#      but WITHOUT ANY WARRANTY; without even the implied warranty of
-#      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#      GNU General Public License for more details.
-#
-#      You should have received a copy of the GNU General Public License
-#      along with pyaoi.  If not, see <https://www.gnu.org/licenses/>.
-#
+
+# Copyright 2020-2021 Jonas Muehlmann
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this
+# software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+# the Software, and to permit persons to whom the Software is furnished to do so,
+# subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+# INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+# IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+# TORT OR OTHERWISE,ARISING FROM, OUT OF OR IN CONNECTION WITH
+# THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
 import itertools
 import operator
 from typing import (
@@ -92,8 +85,8 @@ def none_of(iterable: Iterable, unary_predicate: UnaryPredicate) -> bool:
 
 
 def for_each(
-    iterable: Iterable,
-    unary_function: UnaryFunction,
+        iterable: Iterable,
+        unary_function: UnaryFunction,
 ) -> None:
     """Apply an unary function to each element in the iterable.
 
@@ -108,9 +101,9 @@ def for_each(
 
 
 def for_each_n(
-    sequence: Sequence,
-    unary_function: UnaryFunction,
-    num_elements: int,  # noqa: VNE001,C0103
+        sequence: Sequence,
+        unary_function: UnaryFunction,
+        num_elements: int,  # noqa: VNE001,C0103
 ) -> None:
     """Apply an unary function to the first num_elements elements in the sequence, modifying the elements.
 
@@ -165,9 +158,9 @@ def count_if_not(collection: Collection, unary_predicate: UnaryPredicate) -> int
 
 
 def mismatch(
-    sequence1: Sequence,
-    sequence2: Sequence,
-    binary_predicate: BinaryPredicate = operator.eq,
+        sequence1: Sequence,
+        sequence2: Sequence,
+        binary_predicate: BinaryPredicate = operator.eq,
 ) -> Optional[Tuple[Any, Any]]:  # noqa E1136
     """Find the first pair of elements from both sequences, that are considered not equal.
 
@@ -265,9 +258,9 @@ def find_if_not(iterable: Iterable, unary_predicate: UnaryPredicate) -> int:
 
 
 def find_end(
-    collection_super: Collection,
-    collection_sub: Collection,
-    binary_predicate: BinaryPredicate = operator.eq,
+        collection_super: Collection,
+        collection_sub: Collection,
+        binary_predicate: BinaryPredicate = operator.eq,
 ) -> int:
     """Find index of the beginning of the last occurrence of collection_sub in collection_super.
 
@@ -285,10 +278,10 @@ def find_end(
         return -1
 
     for i in range(  # noqa: VNE001
-        (len(collection_super) - 1) - (len(collection_sub) - 1), -1, -1
+            (len(collection_super) - 1) - (len(collection_sub) - 1), -1, -1
     ):
         if binary_predicate(
-            collection_super[i : i + len(collection_sub)], collection_sub  # noqa E203
+                collection_super[i: i + len(collection_sub)], collection_sub  # noqa E203
         ):
             return i
 
@@ -296,9 +289,9 @@ def find_end(
 
 
 def find_first_of(
-    iterable_super: Iterable,
-    iterable_sub: Iterable,
-    binary_predicate: BinaryPredicate = operator.eq,
+        iterable_super: Iterable,
+        iterable_sub: Iterable,
+        binary_predicate: BinaryPredicate = operator.eq,
 ) -> int:
     """Find first index in values_in at which an element of iterable_sub occurs.
 
@@ -323,7 +316,7 @@ def find_first_of(
 
 
 def adjacent_find(
-    sequence: Sequence, binary_predicate: BinaryPredicate = operator.eq
+        sequence: Sequence, binary_predicate: BinaryPredicate = operator.eq
 ) -> int:
     """Find the first index at which two adjacent elements are considered equal.
 
@@ -341,16 +334,16 @@ def adjacent_find(
         # Multiplying index by two, since the list resulting from the call to map has
         # half the length of the input, since it is sliced in half
         return (
-            list(map(binary_predicate, sequence[::2], sequence[1::2])).index(True) * 2
+                list(map(binary_predicate, sequence[::2], sequence[1::2])).index(True) * 2
         )
     except ValueError:
         return -1
 
 
 def search(
-    sequence_super: Sequence,
-    sequence_sub: Sequence,
-    binary_predicate: BinaryPredicate = operator.eq,
+        sequence_super: Sequence,
+        sequence_sub: Sequence,
+        binary_predicate: BinaryPredicate = operator.eq,
 ) -> int:
     """Search for the first occurrence of sequence_sub in sequence_super.
 
@@ -377,10 +370,10 @@ def search(
 
 
 def search_n(
-    sequence: Sequence,
-    value: Any,  # noqa: VNE002
-    num_elements: int,  # noqa: VNE001
-    binary_predicate: BinaryPredicate = operator.eq,
+        sequence: Sequence,
+        value: Any,  # noqa: VNE002
+        num_elements: int,  # noqa: VNE001
+        binary_predicate: BinaryPredicate = operator.eq,
 ) -> int:
     """Search for the first occurrence of num_elements repetitions of value in sequence.
 
@@ -398,7 +391,7 @@ def search_n(
         return -1
 
     for i in range(len((sequence))):  # noqa: VNE001
-        for element in sequence[i : i + num_elements]:  # noqa: E203
+        for element in sequence[i: i + num_elements]:  # noqa: E203
             if not binary_predicate(element, value):
                 break
         else:
@@ -422,7 +415,7 @@ def copy_replace(iterable: Iterable, old_val: Any, new_val: Any) -> Iterable:
 
 
 def copy_replace_if(
-    iterable: Iterable, unary_predicate: UnaryPredicate, new_val: Any
+        iterable: Iterable, unary_predicate: UnaryPredicate, new_val: Any
 ) -> Iterable:
     """Copy iterable while replacing all values satisfying unary_predicate with new_val.
 
@@ -438,7 +431,7 @@ def copy_replace_if(
 
 
 def copy_replace_if_not(
-    iterable: Iterable, unary_predicate: UnaryPredicate, new_val: Any
+        iterable: Iterable, unary_predicate: UnaryPredicate, new_val: Any
 ) -> Iterable:
     """Copy iterable while replacing all values not satisfying unary_predicate with new_val.
 
@@ -503,7 +496,7 @@ def fill(mutable_sequence: MutableSequence, val: Any) -> None:  # noqa: VNE002
 
 
 def fill_n(
-    mutable_sequence: MutableSequence, val: Any, num_elements: int  # noqa: VNE002
+        mutable_sequence: MutableSequence, val: Any, num_elements: int  # noqa: VNE002
 ) -> None:
     """Set the first num_elements indices of mutable_sequence to val.
 
@@ -529,7 +522,7 @@ def transform(mutable_sequence: MutableSequence, unary_function: UnaryFunction) 
 
 
 def transform_n(
-    mutable_sequence: MutableSequence, unary_function: UnaryFunction, num_elements: int
+        mutable_sequence: MutableSequence, unary_function: UnaryFunction, num_elements: int
 ) -> None:
     """Change the first num_elements elements in mutable_sequence by passing them to unary_function and replacing them by the return values.
 
