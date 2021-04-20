@@ -2,6 +2,13 @@
 
 <!--next-version-placeholder-->
 
+## v2.5.0 (2021-04-20)
+### Feature
+* Implement `rotate_copy()`, `shift_left()` and `shift_right()` ([`69d116c`](https://github.com/JonasMuehlmann/pyaoi/commit/69d116cf5d5bd2f15d15a4b7927dd5648b172df9))
+
+### Documentation
+* Update Readme.md ([`d380ebc`](https://github.com/JonasMuehlmann/pyaoi/commit/d380ebc78fb4a617590a9cb551af05b2b1a94e40))
+
 ## v2.4.0 (2020-12-31)
 ### Feature
 * Implement transform_n() ([`168a99a`](https://github.com/JonasMuehlmann/pyaoi/commit/168a99a10291357be815c34ed37146f9733949f9))
