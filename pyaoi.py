@@ -22,6 +22,7 @@
 # THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
+import collections
 import itertools
 import operator
 from typing import (
@@ -33,6 +34,7 @@ from typing import (
     Collection,
     Sequence,
     MutableSequence,
+    Deque, Sized,
 )
 
 UnaryPredicate = Callable[[Any], bool]
@@ -534,3 +536,32 @@ def transform_n(
     mutable_sequence[:num_elements] = map(
         unary_function, mutable_sequence[:num_elements]
     )
+
+
+def rotate_copy(iterable: Iterable, n: int) -> Deque:
+    """Return a deque of iterable with it's content rotated n places to the right.
+    
+    iterable: An iterable to rotate
+    n: The number of places to rotate the iterable (negative values rotate to the left)
+    """
+    deq: Deque = collections.deque(iterable)
+    deq.rotate(n)
+    return deq
+
+
+def shift_left(sized: Sized, n: int) -> Sized:
+    """Return a copy of sized with it's elements shifted n places to the right but keeping the same size.
+
+    sized: A sized object which's elements to shift 
+    n: How many places to shift sized's items to the right
+    """
+    return sized[:len(sized) - n] + [None] * n
+
+
+def shift_right(sized: Sized, n: int) -> Sized:
+    """Return a copy of sized with it's elements shifted n places to the left but keeping the same size.
+
+    sized: A sized object which's elements to shift 
+    n: How many places to shift sized's items to the left
+    """
+    return [None] * n + sized[n:len(sized)]

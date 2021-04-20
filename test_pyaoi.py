@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 
+import collections
 from typing import List
 
 import pyaoi
@@ -408,3 +409,47 @@ class TestTransformN:
 
         pyaoi.transform_n(mutable_sequence, lambda x: x + 1, 2)
         assert mutable_sequence == [2, 3, 3, 4]
+
+
+class TestRotateCopy:
+    def test_empty(self):
+        assert pyaoi.rotate_copy([], 0) == collections.deque([])
+
+    def test_rotate_0(self):
+        assert pyaoi.rotate_copy([1, 2, 3, 4, 5], 0) == collections.deque([1, 2, 3, 4, 5])
+
+    def test_rotate_left(self):
+        assert pyaoi.rotate_copy([1, 2, 3, 4, 5], 2) == collections.deque([4, 5, 1, 2, 3])
+
+    def test_rotate_right(self):
+        assert pyaoi.rotate_copy([1, 2, 3, 4, 5], -2) == collections.deque([3, 4, 5, 1, 2])
+
+
+# TODO: Refactor unit tests
+
+class TestShiftLeft:
+    def test_empty(self):
+        assert pyaoi.shift_left([], 0) == []
+
+    def test_shift_0(self):
+        assert pyaoi.shift_left([1, 2, 3, 4, 5], 0) == [1, 2, 3, 4, 5]
+
+    def test_shift_2(self):
+        assert pyaoi.shift_left([1, 2, 3, 4, 5], 2) == [1, 2, 3, None, None]
+
+    def test_shift_len(self):
+        assert pyaoi.shift_left([1, 2, 3, 4, 5], 5) == [None] * 5
+
+
+class TestShifRight:
+    def test_empty(self):
+        assert pyaoi.shift_right([], 0) == []
+
+    def test_shift_0(self):
+        assert pyaoi.shift_right([1, 2, 3, 4, 5], 0) == [1, 2, 3, 4, 5]
+
+    def test_shift_2(self):
+        assert pyaoi.shift_right([1, 2, 3, 4, 5], 2) == [None, None, 3, 4, 5]
+
+    def test_shift_len(self):
+        assert pyaoi.shift_right([1, 2, 3, 4, 5], 5) == [None] * 5
