@@ -6,6 +6,8 @@ This project provides a bunch of functions to interact with iterables, it is ins
 the [algorithm header](https://en.cppreference.com/w/cpp/algorithm) from the C++ standard template library (STL for
 short).
 
+Please do not expect a stable API at this point.
+
 ## Installation
 
 ```pip install pyaoi```
