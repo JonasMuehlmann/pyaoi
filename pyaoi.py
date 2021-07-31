@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """A collection of functions operating on iterables."""
-
 # Copyright 2020-2021 Jonas Muehlmann
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this
@@ -25,6 +24,8 @@
 import collections
 import itertools
 import operator
+from collections import deque
+from itertools import chain
 from typing import (
     Any,
     Callable,
@@ -244,11 +245,11 @@ def find_if(iterable: Iterable, unary_predicate: UnaryPredicate) -> int:
     if not iterable:
         return -1
 
-    try:
-        return list(map(unary_predicate, iterable)).index(True)
+    for i, val in enumerate(iterable):  # noqa: VNE002
+        if unary_predicate(val):
+            return i
 
-    except ValueError:
-        return -1
+    return -1
 
 
 def find_if_not(iterable: Iterable, unary_predicate: UnaryPredicate) -> int:
@@ -265,11 +266,11 @@ def find_if_not(iterable: Iterable, unary_predicate: UnaryPredicate) -> int:
     if not iterable:
         return -1
 
-    try:
-        return list(map(unary_predicate, iterable)).index(False)
+    for i, val in enumerate(iterable):  # noqa: VNE002
+        if not unary_predicate(val):
+            return i
 
-    except ValueError:
-        return -1
+    return -1
 
 
 def find_end(
@@ -512,55 +513,32 @@ def copy_except_if_not(iterable: Iterable, unary_predicate: UnaryPredicate) -> I
     return (val for val in iterable if unary_predicate(val))
 
 
-def fill(mutable_sequence: MutableSequence, val: Any) -> None:  # noqa: VNE002
-    """Set all indices of mutable_sequence to val.
-
-    Args:
-        mutable_sequence: A sequence to fill
-        val: A value to set all indices of sequence to
-    """
-    mutable_sequence[:] = itertools.repeat(val, len(mutable_sequence))
-
-
 def fill_n(
     mutable_sequence: MutableSequence, val: Any, num_elements: int  # noqa: VNE002
 ) -> None:
-    """Set the first num_elements indices of mutable_sequence to val.
+    """Set the first num_elements indices of sequence to val.
 
-    Args:
-        mutable_sequence: A sequence to fill
-        val: A value to set indices of sequence to
-        num_elements: A value indicating how many indices(counted from the beginning) to set to val
+    mutable_sequence: A sequence to fill
+    val: A value to set all indices of sequence to
+    num_elements: A value indicating how many indices(counted from the beginning) to set to val
     """
-    mutable_sequence[:num_elements] = itertools.repeat(
-        val,
-        num_elements if num_elements < len(mutable_sequence) else len(mutable_sequence),
-    )
+    mutable_sequence[:num_elements] = itertools.repeat(val, len(mutable_sequence))
 
 
-def transform(mutable_sequence: MutableSequence, unary_function: UnaryFunction) -> None:
-    """Change every element in mutable_sequence by passing it to unary_function and replacing it by the return value.
-
-    Args:
-        mutable_sequence: A sequence to modify
-        unary_function: A function returning new values for each element
-    """
-    mutable_sequence[:] = map(unary_function, mutable_sequence)
-
-
-def transform_n(
-    mutable_sequence: MutableSequence, unary_function: UnaryFunction, num_elements: int
-) -> None:
-    """Change the first num_elements elements in mutable_sequence by passing them to unary_function and replacing them by the return values.
+def map_n(
+    sequence: Sequence, unary_function: UnaryFunction, num_elements: int
+) -> chain:
+    """Change the first num_elements elements in sequence by passing them to unary_function and replacing them by the return values.
 
     Args:
-        mutable_sequence: A sequence to modify
+        sequence: A sequence to modify
         unary_function: A function returning new values for each element
         num_elements: A value indicating the number of elements(counted from the beginning) to transform
+    Returns:
+        An iterable with the first num_elements elements changed by unary_function
     """
-    mutable_sequence[:num_elements] = map(
-        unary_function, mutable_sequence[:num_elements]
-    )
+
+    return chain(map(unary_function, sequence[:num_elements]), sequence[num_elements:])
 
 
 def rotate_copy(iterable: Iterable, n: int) -> Deque:
@@ -577,7 +555,6 @@ def rotate_copy(iterable: Iterable, n: int) -> Deque:
 
 def shift_left(sized: Sized, n: int) -> Sized:
     """Return a copy of sized with it's elements shifted n places to the right but keeping the same size.
-
     sized: A sized object which's elements to shift
     n: How many places to shift sized's items to the right
     """
@@ -587,7 +564,6 @@ def shift_left(sized: Sized, n: int) -> Sized:
 
 def shift_right(sized: Sized, n: int) -> Sized:
     """Return a copy of sized with it's elements shifted n places to the left but keeping the same size.
-
     sized: A sized object which's elements to shift
     n: How many places to shift sized's items to the left
     """

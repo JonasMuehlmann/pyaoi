@@ -6,7 +6,7 @@ import setuptools  # type: ignore
 with open("README.md", "r", encoding="utf-8") as readme:
     long_description = readme.read()
 
-__version__ = "2.4.0"
+__version__ = "0.1.0"
 
 setuptools.setup(
     name="pyaoi",
@@ -20,7 +20,7 @@ setuptools.setup(
     py_modules=["pyaoi"],
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: OS Independent",
         "Intended Audience :: Developers",
         "Topic :: Utilities",

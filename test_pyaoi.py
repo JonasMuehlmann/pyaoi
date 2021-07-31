@@ -359,56 +359,20 @@ class TestCopyExceptIfNot:
         ]
 
 
-class TestFill:
-    def test_all(self):
-        sequence = [1, 2, 3, 4]
-        pyaoi.fill(sequence, 5)
-        assert sequence == [5, 5, 5, 5]
-
-    def test_empty(self):
-        sequence = []
-        pyaoi.fill(sequence, 5)
-        assert sequence == []
-
-
 class TestFillN:
     def test_first_2(self):
-        sequence = [1, 2, 3, 4]
-        pyaoi.fill_n(sequence, 5, 2)
-        assert sequence == [5, 5, 3, 4]
+        assert list(pyaoi.fill_n([1, 2, 3, 4], 5, 2)) == [5, 5, 3, 4]
 
     def test_empty(self):
-        sequence = []
-        pyaoi.fill_n(sequence, 5, 2)
-        assert sequence == []
+        assert list(pyaoi.fill_n([], 5, 2)) == []
 
 
-class TestTransform:
+class TestMapN:
     def test_empty(self):
-        mutable_sequence = []
-
-        pyaoi.transform(mutable_sequence, lambda x: x + 1)
-        assert mutable_sequence == []
+        assert list(pyaoi.map_n([], lambda x: x + 1, 2)) == []
 
     def test_change_all(self):
-        mutable_sequence = [1, 2, 3, 4]
-
-        pyaoi.transform(mutable_sequence, lambda x: x + 1)
-        assert mutable_sequence == [2, 3, 4, 5]
-
-
-class TestTransformN:
-    def test_empty(self):
-        mutable_sequence = []
-
-        pyaoi.transform_n(mutable_sequence, lambda x: x + 1, 5)
-        assert mutable_sequence == []
-
-    def test_change_all(self):
-        mutable_sequence = [1, 2, 3, 4]
-
-        pyaoi.transform_n(mutable_sequence, lambda x: x + 1, 2)
-        assert mutable_sequence == [2, 3, 3, 4]
+        assert list(pyaoi.map_n([1, 2, 3, 4], lambda x: x + 1, 2)) == [2, 3, 3, 4]
 
 
 class TestRotateCopy:
@@ -416,16 +380,23 @@ class TestRotateCopy:
         assert pyaoi.rotate_copy([], 0) == collections.deque([])
 
     def test_rotate_0(self):
-        assert pyaoi.rotate_copy([1, 2, 3, 4, 5], 0) == collections.deque([1, 2, 3, 4, 5])
+        assert pyaoi.rotate_copy([1, 2, 3, 4, 5], 0) == collections.deque(
+            [1, 2, 3, 4, 5]
+        )
 
     def test_rotate_left(self):
-        assert pyaoi.rotate_copy([1, 2, 3, 4, 5], 2) == collections.deque([4, 5, 1, 2, 3])
+        assert pyaoi.rotate_copy([1, 2, 3, 4, 5], 2) == collections.deque(
+            [4, 5, 1, 2, 3]
+        )
 
     def test_rotate_right(self):
-        assert pyaoi.rotate_copy([1, 2, 3, 4, 5], -2) == collections.deque([3, 4, 5, 1, 2])
+        assert pyaoi.rotate_copy([1, 2, 3, 4, 5], -2) == collections.deque(
+            [3, 4, 5, 1, 2]
+        )
 
 
 # TODO: Refactor unit tests
+
 
 class TestShiftLeft:
     def test_empty(self):

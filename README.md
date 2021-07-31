@@ -2,9 +2,11 @@
 
 [![Join the chat at https://gitter.im/pyaoi/community](https://badges.gitter.im/pyaoi/community.svg)](https://gitter.im/pyaoi/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.com/JonasMuehlmann/pyaoi.svg?branch=master)](https://travis-ci.com/JonasMuehlmann/pyaoi) ![img](https://img.shields.io/badge/semver-2.0.0-green) [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org) [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-This project provides convenient functions to process iterables, it is inspired by
+This project provides a bunch of functions to interact with iterables, it is inspired by
 the [algorithm header](https://en.cppreference.com/w/cpp/algorithm) from the C++ standard template library (STL for
 short).
+
+Please do not expect a stable API at this point.
 
 ## Installation
 
@@ -65,11 +67,11 @@ function's implementation. This list is subject to change at any time.
 - [x] transform_n
 
 
-- [x] rotate_copy
+- [x] rotate
 
 
-- [x] shift_left
-- [x] shift_right
+- [ ] shift_left
+- [ ] shift_right
 
 
 - [ ] random_shuffle
@@ -189,6 +191,6 @@ Please familiarise yourself with this project's [code of conduct](CODE_OF_CONDUC
 2. If you think you found a bug, or documentation could be improved, please open an issue
 
 ## License
-Copyright (C) 2020-2021 [Jonas Muehlmann](https://github.com/JonasMuehlmann)
+Copyright (C) 2020 [Jonas Muehlmann](https://github.com/JonasMuehlmann)
  
-The project is licensed under the terms of the MIT license, you can view it [here](LICENSE.md).
+The project is licensed under the terms of the GPL-V3 license, you can view it [here](LICENSE.md).
