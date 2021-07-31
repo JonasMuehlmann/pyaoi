@@ -2,6 +2,14 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.1 (2021-07-31)
+### Fix
+* Fix merge errors of version ([`a32f9ed`](https://github.com/JonasMuehlmann/pyaoi/commit/a32f9edf6d6cba8594a6b7363215f944deea4149))
+* Fix merge errors of license and version ([`6473b04`](https://github.com/JonasMuehlmann/pyaoi/commit/6473b04086f786ec587185d3c9aea1fe88e2aee5))
+
+### Documentation
+* Check box for implementation of `shift_left()` and `shift_right()` ([`7273388`](https://github.com/JonasMuehlmann/pyaoi/commit/7273388fa8a731eeda2cf4a6b8b1790fb4c35186))
+
 ## v0.2.0 (2021-07-31)
 ### Fix
 * Merge fix ([`042f4e9`](https://github.com/JonasMuehlmann/pyaoi/commit/042f4e9e870dd76f9b592d193be5eeaf9f80255f))
