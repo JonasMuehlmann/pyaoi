@@ -2,17 +2,17 @@
 """A collection of functions operating on iterables."""
 
 # Copyright 2020-2021 Jonas Muehlmann
-# 
+#
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this
 # software and associated documentation files (the "Software"),
 # to deal in the Software without restriction, including without limitation the rights
 # to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
 # the Software, and to permit persons to whom the Software is furnished to do so,
 # subject to the following conditions:
-# 
+#
 # The above copyright notice and this permission notice shall be included in all
 # copies or substantial portions of the Software.
-# 
+#
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 # INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
@@ -26,15 +26,16 @@ import collections
 import itertools
 import operator
 from typing import (
-    Callable,
     Any,
-    Tuple,
-    Optional,
-    Iterable,
+    Callable,
     Collection,
-    Sequence,
+    Deque,
+    Iterable,
     MutableSequence,
-    Deque, Sized,
+    Optional,
+    Sequence,
+    Sized,
+    Tuple,
 )
 
 UnaryPredicate = Callable[[Any], bool]
@@ -57,6 +58,7 @@ def all_of(iterable: Iterable, unary_predicate: UnaryPredicate) -> bool:
     Returns:
         True if the predicate evaluates to True for every element in the iterable, False otherwise or if the iterable is empty
     """
+
     return False if not iterable else all(map(unary_predicate, iterable))
 
 
@@ -70,6 +72,7 @@ def any_of(iterable: Iterable, unary_predicate: UnaryPredicate) -> bool:
     Returns:
         True if the predicate evaluates to True for any element in the iterable, False otherwise or if the iterable is empty
     """
+
     return False if not iterable else any(map(unary_predicate, iterable))
 
 
@@ -83,12 +86,13 @@ def none_of(iterable: Iterable, unary_predicate: UnaryPredicate) -> bool:
     Returns:
         True if the predicate evaluates to True for no element in the iterable or if the iterable is empty, False otherwise
     """
+
     return True if not iterable else not all(map(unary_predicate, iterable))
 
 
 def for_each(
-        iterable: Iterable,
-        unary_function: UnaryFunction,
+    iterable: Iterable,
+    unary_function: UnaryFunction,
 ) -> None:
     """Apply an unary function to each element in the iterable.
 
@@ -98,14 +102,15 @@ def for_each(
         iterable: An iterable to apply the unary_function to
         unary_function: An unary function to apply to each element in the iterable
     """
+
     for element in iterable:
         unary_function(element)
 
 
 def for_each_n(
-        sequence: Sequence,
-        unary_function: UnaryFunction,
-        num_elements: int,  # noqa: VNE001,C0103
+    sequence: Sequence,
+    unary_function: UnaryFunction,
+    num_elements: int,  # noqa: VNE001,C0103
 ) -> None:
     """Apply an unary function to the first num_elements elements in the sequence, modifying the elements.
 
@@ -116,6 +121,7 @@ def for_each_n(
         unary_function: An unary function to apply to each element in the sequence
         num_elements: A number indicating the number of elements (counted from the start) to apply the unary_function to
     """
+
     for element in sequence[:num_elements]:
         unary_function(element)
 
@@ -130,6 +136,7 @@ def count(sequence: Sequence, target: Any) -> int:
     Returns:
         How often target appeared in sequence
     """
+
     return sequence.count(target)
 
 
@@ -143,6 +150,7 @@ def count_if(iterable: Iterable, unary_predicate: UnaryPredicate) -> int:
     Returns:
         For how many items unary predicate returned True
     """
+
     return sum(map(unary_predicate, iterable))
 
 
@@ -156,13 +164,14 @@ def count_if_not(collection: Collection, unary_predicate: UnaryPredicate) -> int
     Returns:
         For how many items unary predicate returned False
     """
+
     return len(collection) - sum(map(unary_predicate, collection))
 
 
 def mismatch(
-        sequence1: Sequence,
-        sequence2: Sequence,
-        binary_predicate: BinaryPredicate = operator.eq,
+    sequence1: Sequence,
+    sequence2: Sequence,
+    binary_predicate: BinaryPredicate = operator.eq,
 ) -> Optional[Tuple[Any, Any]]:  # noqa E1136
     """Find the first pair of elements from both sequences, that are considered not equal.
 
@@ -190,6 +199,7 @@ def mismatch(
         mismatch([1, 2, 3, 4, 5], [1, 2, 3, 4, 6, 7, 8, 9]) returns (5, 6) for the same reason.
             Since one sequence is longer, it's additional elements are not compared
     """
+
     if not sequence1 or not sequence2:
         return None
 
@@ -209,6 +219,7 @@ def find(sequence: Sequence, target_element: Any) -> int:
     Returns:
         The index of target_element's first occurrence, -1 if it was not found or the sequence is empty
     """
+
     if not sequence:
         return -1
 
@@ -229,6 +240,7 @@ def find_if(iterable: Iterable, unary_predicate: UnaryPredicate) -> int:
     Returns:
         The index of the first element which satisfies unary_predicate, -1 if no element satisfies unary_predicate or the iterable is empty
     """
+
     if not iterable:
         return -1
 
@@ -249,6 +261,7 @@ def find_if_not(iterable: Iterable, unary_predicate: UnaryPredicate) -> int:
     Returns:
         The index of the first element which DOES NOT satisfy unary_predicate, -1 if all elements satisfy unary_predicate or the iterable is empty
     """
+
     if not iterable:
         return -1
 
@@ -260,9 +273,9 @@ def find_if_not(iterable: Iterable, unary_predicate: UnaryPredicate) -> int:
 
 
 def find_end(
-        collection_super: Collection,
-        collection_sub: Collection,
-        binary_predicate: BinaryPredicate = operator.eq,
+    collection_super: Collection,
+    collection_sub: Collection,
+    binary_predicate: BinaryPredicate = operator.eq,
 ) -> int:
     """Find index of the beginning of the last occurrence of collection_sub in collection_super.
 
@@ -276,14 +289,15 @@ def find_end(
             -1 if any of the two collections is empty, or collection_sub does not occur once in collection_super
 
     """
+
     if not collection_super or not collection_sub:
         return -1
 
     for i in range(  # noqa: VNE001
-            (len(collection_super) - 1) - (len(collection_sub) - 1), -1, -1
+        (len(collection_super) - 1) - (len(collection_sub) - 1), -1, -1
     ):
         if binary_predicate(
-                collection_super[i: i + len(collection_sub)], collection_sub  # noqa E203
+            collection_super[i : i + len(collection_sub)], collection_sub  # noqa E203
         ):
             return i
 
@@ -291,9 +305,9 @@ def find_end(
 
 
 def find_first_of(
-        iterable_super: Iterable,
-        iterable_sub: Iterable,
-        binary_predicate: BinaryPredicate = operator.eq,
+    iterable_super: Iterable,
+    iterable_sub: Iterable,
+    binary_predicate: BinaryPredicate = operator.eq,
 ) -> int:
     """Find first index in values_in at which an element of iterable_sub occurs.
 
@@ -306,6 +320,7 @@ def find_first_of(
         The first index in values_in at which an element of iterable_sub occurs,
             or -1 if any of the two iterables is empty or iterable_sub does not occur once in iterable_super
     """
+
     if not iterable_super or not iterable_sub:
         return -1
 
@@ -318,7 +333,7 @@ def find_first_of(
 
 
 def adjacent_find(
-        sequence: Sequence, binary_predicate: BinaryPredicate = operator.eq
+    sequence: Sequence, binary_predicate: BinaryPredicate = operator.eq
 ) -> int:
     """Find the first index at which two adjacent elements are considered equal.
 
@@ -330,22 +345,24 @@ def adjacent_find(
         The first index at which two adjacent elements are considered equal,
             or -1 if the sequence is empty or no two adjacent elements are considered equal
     """
+
     if not sequence:
         return -1
     try:
         # Multiplying index by two, since the list resulting from the call to map has
         # half the length of the input, since it is sliced in half
+
         return (
-                list(map(binary_predicate, sequence[::2], sequence[1::2])).index(True) * 2
+            list(map(binary_predicate, sequence[::2], sequence[1::2])).index(True) * 2
         )
     except ValueError:
         return -1
 
 
 def search(
-        sequence_super: Sequence,
-        sequence_sub: Sequence,
-        binary_predicate: BinaryPredicate = operator.eq,
+    sequence_super: Sequence,
+    sequence_sub: Sequence,
+    binary_predicate: BinaryPredicate = operator.eq,
 ) -> int:
     """Search for the first occurrence of sequence_sub in sequence_super.
 
@@ -358,6 +375,7 @@ def search(
         The index of the beginning of the first occurrence of sequence_sub in sequence_super,
             or -1 if any sequence_super or sequence_sub is empty or sequence_sub does not occur once in sequence_super
     """
+
     if not sequence_super or not sequence_sub:
         return -1
 
@@ -372,10 +390,10 @@ def search(
 
 
 def search_n(
-        sequence: Sequence,
-        value: Any,  # noqa: VNE002
-        num_elements: int,  # noqa: VNE001
-        binary_predicate: BinaryPredicate = operator.eq,
+    sequence: Sequence,
+    value: Any,  # noqa: VNE002
+    num_elements: int,  # noqa: VNE001
+    binary_predicate: BinaryPredicate = operator.eq,
 ) -> int:
     """Search for the first occurrence of num_elements repetitions of value in sequence.
 
@@ -389,11 +407,12 @@ def search_n(
         The index of the beginning of the first num_elements repetitions of value in sequence,
             or -1 if sequence is empty or value does not occur once in sequence
     """
+
     if not sequence:
         return -1
 
     for i in range(len((sequence))):  # noqa: VNE001
-        for element in sequence[i: i + num_elements]:  # noqa: E203
+        for element in sequence[i : i + num_elements]:  # noqa: E203
             if not binary_predicate(element, value):
                 break
         else:
@@ -413,11 +432,12 @@ def copy_replace(iterable: Iterable, old_val: Any, new_val: Any) -> Iterable:
     Returns:
         A generator yielding the values of iterable with all occurrences of old_val replaced with new_val
     """
+
     return (val if val != old_val else new_val for val in iterable)
 
 
 def copy_replace_if(
-        iterable: Iterable, unary_predicate: UnaryPredicate, new_val: Any
+    iterable: Iterable, unary_predicate: UnaryPredicate, new_val: Any
 ) -> Iterable:
     """Copy iterable while replacing all values satisfying unary_predicate with new_val.
 
@@ -429,11 +449,12 @@ def copy_replace_if(
     Returns:
         A generator yielding the values of iterable with all values satisfying unary_predicate replaced with new_val
     """
+
     return (new_val if unary_predicate(val) else val for val in iterable)
 
 
 def copy_replace_if_not(
-        iterable: Iterable, unary_predicate: UnaryPredicate, new_val: Any
+    iterable: Iterable, unary_predicate: UnaryPredicate, new_val: Any
 ) -> Iterable:
     """Copy iterable while replacing all values not satisfying unary_predicate with new_val.
 
@@ -445,6 +466,7 @@ def copy_replace_if_not(
     Returns:
         A generator yielding the values of iterable with all values not satisfying unary_predicate replaced with new_val
     """
+
     return (new_val if not unary_predicate(val) else val for val in iterable)
 
 
@@ -458,6 +480,7 @@ def copy_except(iterable: Iterable, exclude: Any) -> Iterable:
     Returns:
         A generator yielding the values of iterable except exclude
     """
+
     return (val for val in iterable if val != exclude)
 
 
@@ -471,6 +494,7 @@ def copy_except_if(iterable: Iterable, unary_predicate: UnaryPredicate) -> Itera
     Returns:
         A generator yielding the values of iterable except the ones satisfying unary_predicate
     """
+
     return (val for val in iterable if not unary_predicate(val))
 
 
@@ -484,6 +508,7 @@ def copy_except_if_not(iterable: Iterable, unary_predicate: UnaryPredicate) -> I
     Returns:
         A generator yielding the values of iterable except the ones not satisfying unary_predicate
     """
+
     return (val for val in iterable if unary_predicate(val))
 
 
@@ -498,7 +523,7 @@ def fill(mutable_sequence: MutableSequence, val: Any) -> None:  # noqa: VNE002
 
 
 def fill_n(
-        mutable_sequence: MutableSequence, val: Any, num_elements: int  # noqa: VNE002
+    mutable_sequence: MutableSequence, val: Any, num_elements: int  # noqa: VNE002
 ) -> None:
     """Set the first num_elements indices of mutable_sequence to val.
 
@@ -524,7 +549,7 @@ def transform(mutable_sequence: MutableSequence, unary_function: UnaryFunction) 
 
 
 def transform_n(
-        mutable_sequence: MutableSequence, unary_function: UnaryFunction, num_elements: int
+    mutable_sequence: MutableSequence, unary_function: UnaryFunction, num_elements: int
 ) -> None:
     """Change the first num_elements elements in mutable_sequence by passing them to unary_function and replacing them by the return values.
 
@@ -540,28 +565,31 @@ def transform_n(
 
 def rotate_copy(iterable: Iterable, n: int) -> Deque:
     """Return a deque of iterable with it's content rotated n places to the right.
-    
+
     iterable: An iterable to rotate
     n: The number of places to rotate the iterable (negative values rotate to the left)
     """
     deq: Deque = collections.deque(iterable)
     deq.rotate(n)
+
     return deq
 
 
 def shift_left(sized: Sized, n: int) -> Sized:
     """Return a copy of sized with it's elements shifted n places to the right but keeping the same size.
 
-    sized: A sized object which's elements to shift 
+    sized: A sized object which's elements to shift
     n: How many places to shift sized's items to the right
     """
-    return sized[:len(sized) - n] + [None] * n
+
+    return sized[: len(sized) - n] + [None] * n
 
 
 def shift_right(sized: Sized, n: int) -> Sized:
     """Return a copy of sized with it's elements shifted n places to the left but keeping the same size.
 
-    sized: A sized object which's elements to shift 
+    sized: A sized object which's elements to shift
     n: How many places to shift sized's items to the left
     """
-    return [None] * n + sized[n:len(sized)]
+
+    return [None] * n + sized[n : len(sized)]
