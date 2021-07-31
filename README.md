@@ -191,6 +191,6 @@ Please familiarise yourself with this project's [code of conduct](CODE_OF_CONDUC
 2. If you think you found a bug, or documentation could be improved, please open an issue
 
 ## License
-Copyright (C) 2020 [Jonas Muehlmann](https://github.com/JonasMuehlmann)
+Copyright (C) 2020-2021 [Jonas Muehlmann](https://github.com/JonasMuehlmann)
  
-The project is licensed under the terms of the GPL-V3 license, you can view it [here](LICENSE.md).
+The project is licensed under the terms of the MIT license, you can view it [here](LICENSE.md).
