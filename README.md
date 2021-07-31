@@ -70,8 +70,8 @@ function's implementation. This list is subject to change at any time.
 - [x] rotate
 
 
-- [ ] shift_left
-- [ ] shift_right
+- [x] shift_left
+- [x] shift_right
 
 
 - [ ] random_shuffle
