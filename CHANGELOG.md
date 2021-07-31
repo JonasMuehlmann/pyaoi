@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.0 (2021-07-31)
+### Fix
+* Merge fix ([`042f4e9`](https://github.com/JonasMuehlmann/pyaoi/commit/042f4e9e870dd76f9b592d193be5eeaf9f80255f))
+
 ## v2.4.0 (2020-12-31)
 ### Feature
 * Implement transform_n() ([`168a99a`](https://github.com/JonasMuehlmann/pyaoi/commit/168a99a10291357be815c34ed37146f9733949f9))
