@@ -529,7 +529,7 @@ def map_n(
     return chain(map(unary_function, sequence[:num_elements]), sequence[num_elements:])
 
 
-def rotate(iterable: Iterable, num_positions: int) -> deque:
+def rotate_copy(iterable: Iterable, num_positions: int) -> deque:
     """Return a deque from iterable rotated num_positions to the right.
 
     Args:
